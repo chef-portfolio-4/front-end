@@ -1,77 +1,68 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import placeholderTruck from "./../../assets/placeholder-truck.jpg";
-import { trucks } from "./../../dummydata";
-import clsx from "clsx";
-import {
-  makeStyles,
-  Card,
-  Button,
-  CardHeader,
-  CardMedia,
-  CardContent,
-  Collapse,
-  CardActions,
-  IconButton
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import CustomerRating from "../diner/CustomerRating";
-import CustomerRatingAvg from "./CustomerRatingAvg";
-import Fav from "./Fav";
+// import placeholderTruck from "./../../assets/placeholder-truck.jpg";
+// import { trucks } from "./../../dummydata";
+// import clsx from "clsx";
+// import {
+//   makeStyles,
+//   Card,
+//   Button,
+//   CardHeader,
+//   CardMedia,
+//   CardContent,
+//   Collapse,
+//   CardActions,
+//   IconButton
+// } from "@material-ui/core";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { connect } from "react-redux";
-import { addFavorite } from "../../store/diner/DinerActions";
-import { deleteTruck } from "../../store/operator/OperatorActions";
+// import { DELETE_RECIPE } from "../../store/recipe/RecipeActions";
 
-const useStyles = makeStyles(theme => ({
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  }
-}));
+// const useStyles = makeStyles(theme => ({
+//   media: {
+//     height: 0,
+//     paddingTop: "56.25%" // 16:9
+//   },
+//   expand: {
+//     transform: "rotate(0deg)",
+//     marginLeft: "auto",
+//     transition: theme.transitions.create("transform", {
+//       duration: theme.transitions.duration.shortest
+//     })
+//   },
+//   expandOpen: {
+//     transform: "rotate(180deg)"
+//   }
+// }));
 
 
   //this should be pulling from all trucks array in backend
-  const truck = trucks.find(truck => props.match.params.id === `${truck.id}`);
+  // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-  const goToEditForm = () => {
-    props.history.push({
-      pathname: "/edittruckform",
-      state: {
-        name: truck.truckName,
-        currentLocation: truck.address
-      }
-    });
-  };
+  // const goToEditForm = () => {
+  //   props.history.push({
+  //     pathname: "/edittruckform",
+  //     state: {
+  //       name: truck.truckName,
+  //       currentLocation: truck.address
+  //     }
+  //   });
+  // };
 
-  const remove = () => {
-    props.deleteTruck(truck.id);
-    props.history.push("/operatordash");
-  };
+  // const remove = () => {
+  //   props.deleteTruck(truck.id);
+  //   props.history.push("/operatordash");
+  // };
 
-  useEffect(() => {
-    console.log(
-      reverseGeocode(truck.currentLocation.lat, truck.currentLocation.lng)
-    );
-  }, []);
 
   return (
-    <Card className="truck-card">
-      <CardHeader title={truck.truckName} subheader={truck.cuisine} />
+    <Card className="recipe-card">
+      <CardHeader title={recipe.recipeName} subheader={recipe.recipeType} />
       <CardMedia
         className={classes.media}
-        image={placeholderTruck}
-        title={truck.truckName}
+        image={placeholderImage}
+        title={recipe.recipeName}
       />
       <div className="card-info">
         <CardContent>
@@ -109,7 +100,7 @@ const useStyles = makeStyles(theme => ({
         </CardContent>
       </div>
       <div className="card-menu">
-        <CardActions disableSpacing>
+        {/* <CardActions disableSpacing>
           <Button className="view-menu-button" onClick={handleExpandClick}>
             View Menu
           </Button>
@@ -124,16 +115,14 @@ const useStyles = makeStyles(theme => ({
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Collapse in={expanded} timeout="auto" unmountOnExit> */}
           <CardContent>
-            {truck.truckMenu.map(food => {
+            {recipes.map(recipe => {
               return (
-                <ul key={food.item} className="menu-item">
+                <ul key={recipe.recipeName} className="menu-item">
                   <div className="foodname-description">
-                    <li>{food.item}</li>
-                    <li className="description">{food.description}</li>
+                    <li>{recipe.recipeType}</li>
                   </div>
-                  <li>{food.price}</li>
                 </ul>
               );
             })}
