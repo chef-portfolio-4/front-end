@@ -8,4 +8,4 @@ const ChefDashboard = () => {
     </div>
   )
 }
-export ChefDashboard
+export default ChefDashboard
