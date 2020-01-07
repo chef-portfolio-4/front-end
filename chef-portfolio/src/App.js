@@ -1,7 +1,9 @@
 import React from "react";
 import {Route, NavLink, Switch, withRouter} from 'react-router-dom';
-import Homepage from "./components/Homepage";
 import PrivateRoute from "./components/PrivateRoute";
+
+import Homepage from "./components/Homepage";
+import Login from "./components/LoginForm"
 // import "./App.css";
 
 function App() {
@@ -23,8 +25,8 @@ function App() {
         
   <section>
           <Switch>
-            {/* <Route path="/login" component={LoginForm} />
-            <Route path="/registerform" component={RegisterForm} />
+             <Route path="/login" component={LoginForm} />
+           {/* <Route path="/registerform" component={RegisterForm} />
             <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
             <Route path="/homepage" component={Homepage} />
             <PrivateRoute exact path = "/chefdashboard" />
