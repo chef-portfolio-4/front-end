@@ -1,9 +1,11 @@
 import React from "react";
+import AddRecipe from "./AddRecipe";
+import {Link} from "react-router-dom"
 
 const ChefDashboard = props => {
   return (
-    <div classname="dashboard">
-      <h3>Welcome, {userName}</h3>
+    <div className="dashboard">
+      {/* <h3>Welcome, {userName}</h3> */}
       {props.recipesList.map(item => {
         return (
           <div className="cards">
