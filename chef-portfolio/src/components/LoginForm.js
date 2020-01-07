@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Button, FormGroup, Label, Input } from "reactstrap";
 
 export default function Login(props) {
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return userName.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
@@ -20,14 +20,16 @@ export default function Login(props) {
           <Label>Email</Label>
           <Input
             autoFocus
+            name="username"
             type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={userName}
+            onChange={e => setUserName(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
           <Label>Password</Label>
           <Input
+            name="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password"

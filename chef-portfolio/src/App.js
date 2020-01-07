@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, NavLink, Switch, withRouter } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
+import Register from "./components/RegisterForm"
 // import "./App.css";
 
 function App() {
@@ -27,8 +28,8 @@ function App() {
       <section>
         <Switch>
           <Route path="/login" component={Login} />
-          {/* <Route path="/registerform" component={Register} />
-            <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
+          <Route path="/register" component={Register} />
+          {/* <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
           <Route path="/homepage" component={Homepage} />
           <PrivateRoute exact path="/chefdashboard" />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />

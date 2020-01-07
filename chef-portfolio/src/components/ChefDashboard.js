@@ -2,7 +2,7 @@ import React from "react";
 
 const ChefDashboard = props => {
   return (
-    <div classname="dashboard">
+    <div className="dashboard">
       <h3>Welcome, {userName}</h3>
       {props.recipesList.map(item => {
         return (
