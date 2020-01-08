@@ -1,77 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import placeholderTruck from "./../../assets/placeholder-truck.jpg";
-// import { trucks } from "./../../dummydata";
-// import clsx from "clsx";
-// import {
-//   makeStyles,
-//   Card,
-//   Button,
-//   CardHeader,
-//   CardMedia,
-//   CardContent,
-//   Collapse,
-//   CardActions,
-//   IconButton
-// } from "@material-ui/core";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { connect } from "react-redux";
-// import { DELETE_RECIPE } from "../../store/recipe/RecipeActions";
 
-// const useStyles = makeStyles(theme => ({
-//   media: {
-//     height: 0,
-//     paddingTop: "56.25%" // 16:9
-//   },
-//   expand: {
-//     transform: "rotate(0deg)",
-//     marginLeft: "auto",
-//     transition: theme.transitions.create("transform", {
-//       duration: theme.transitions.duration.shortest
-//     })
-//   },
-//   expandOpen: {
-//     transform: "rotate(180deg)"
-//   }
-// }));
+import { DELETE_RECIPE, EDIT_RECIPE } from "../../store/recipe/RecipeActions";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-// const goToEditForm = () => {
-//   props.history.push({
-//     pathname: "/edittruckform",
-//     state: {
-//       name: truck.truckName,
-//       currentLocation: truck.address
-//     }
-//   });
-// };
+const goToEditForm = () => {
+  props.history.push({
+    pathname: "/editrecipeform",
+    state: {
+      name: recipe.recipeName
+    }
+  });
+};
 
-// const remove = () => {
-//   props.deleteTruck(truck.id);
-//   props.history.push("/operatordash");
-// };
+const remove = () => {
+  props.deleteRecipe(recipe.id);
+  props.history.push("/chefdashboard");
+};
+
 const RecipeCard = () => {
   return (
     <Card className="recipe-card">
       <CardHeader title={recipe.recipeName} subheader={recipe.recipeType} />
-      <CardMedia
+      {/* <CardMedia
         className={classes.media}
         image={placeholderImage}
         title={recipe.recipeName}
-      />
+      /> */}
       <div className="card-info">
         <CardContent>
-          <div className="card-location">
-            <p className="bold">Current Location</p>
-            <p>{address}</p>
-          </div>
-          <div className="customer-avg">
-            <p className="avg-title">Average customer rating</p>
-            <CustomerRatingAvg />
-          </div>
           {props.role === "diner" && (
             <div class-name="card-rate-heart">
               <div className="user-rate">
@@ -98,22 +59,6 @@ const RecipeCard = () => {
         </CardContent>
       </div>
       <div className="card-menu">
-        {/* <CardActions disableSpacing>
-          <Button className="view-menu-button" onClick={handleExpandClick}>
-            View Menu
-          </Button>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit> */}
         <CardContent>
           {recipes.map(recipe => {
             return (
@@ -131,10 +76,12 @@ const RecipeCard = () => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    role: state.auth.role
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     role: state.auth.role
+//   };
+// };
 
-export default connect(mapStateToProps, { addFavorite, deleteTruck })(Truck);
+export default connect(mapStateToProps, { DELETE_RECIPE, EDIT_RECIPE })(
+  RecipeCard
+);
