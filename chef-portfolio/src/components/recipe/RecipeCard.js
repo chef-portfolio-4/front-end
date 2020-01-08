@@ -36,26 +36,24 @@ import { connect } from "react-redux";
 //   }
 // }));
 
+//this should be pulling from all trucks array in backend
+// const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-  //this should be pulling from all trucks array in backend
-  // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
+// const goToEditForm = () => {
+//   props.history.push({
+//     pathname: "/edittruckform",
+//     state: {
+//       name: truck.truckName,
+//       currentLocation: truck.address
+//     }
+//   });
+// };
 
-  // const goToEditForm = () => {
-  //   props.history.push({
-  //     pathname: "/edittruckform",
-  //     state: {
-  //       name: truck.truckName,
-  //       currentLocation: truck.address
-  //     }
-  //   });
-  // };
-
-  // const remove = () => {
-  //   props.deleteTruck(truck.id);
-  //   props.history.push("/operatordash");
-  // };
-
-
+// const remove = () => {
+//   props.deleteTruck(truck.id);
+//   props.history.push("/operatordash");
+// };
+const RecipeCard = () => {
   return (
     <Card className="recipe-card">
       <CardHeader title={recipe.recipeName} subheader={recipe.recipeType} />
@@ -116,18 +114,18 @@ import { connect } from "react-redux";
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit> */}
-          <CardContent>
-            {recipes.map(recipe => {
-              return (
-                <ul key={recipe.recipeName} className="menu-item">
-                  <div className="foodname-description">
-                    <li>{recipe.recipeType}</li>
-                  </div>
-                </ul>
-              );
-            })}
-          </CardContent>
-        </Collapse>
+        <CardContent>
+          {recipes.map(recipe => {
+            return (
+              <ul key={recipe.recipeName} className="menu-item">
+                <div className="foodname-description">
+                  <li>{recipe.recipeType}</li>
+                </div>
+              </ul>
+            );
+          })}
+        </CardContent>
+        {/* </Collapse> */}
       </div>
     </Card>
   );

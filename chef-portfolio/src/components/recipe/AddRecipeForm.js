@@ -11,7 +11,7 @@ import React, { useState } from "react";
 const AddRecipeForm = props => {
   const [recipe, setRecipe] = useState({
     recipeName: "",
-    recipeImage: "",
+    // recipeImage: "",
     recipeType: "",
     ingredients: "",
     instructions: ""

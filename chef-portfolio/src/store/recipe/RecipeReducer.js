@@ -1,7 +1,7 @@
 import * as types from "./RecipeTypes";
 
 const recipeInitialState = {
-  myRecipes: [
+  recipes: [
     {
       recipeName: "Pork & Beans",
       id: 1,
@@ -25,13 +25,13 @@ export const recipeReducer = (state = recipeInitialState, action) => {
       return {
         ...state,
         newRecipe: action.payload,
-        myRecipes: [...state.myRecipes, state.newRecipe]
+        recipes: [...state.recipes, state.newRecipe]
       };
 
     case types.DELETE_RECIPE:
       return {
         ...state,
-        myRecipes: state.myRecipes.filter(recipe => {
+        recipes: state.recipes.filter(recipe => {
           return recipe.id !== action.payload;
         })
       };

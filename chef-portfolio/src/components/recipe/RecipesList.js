@@ -43,32 +43,25 @@ const Truck = props => {
   console.log("props", props);
 
   //this should be pulling from all trucks array in backend
-  
+
   return (
-    <Card className="truck-card">
-      <CardHeader title={truck.truckName} subheader={truck.cuisine} />
-      <CardMedia
+    <Card className="recipe-card">
+      <CardHeader title={recipe.recipeName} subheader={recipe.recipeType} />
+      {/* <CardMedia
         className={classes.media}
         image={placeholderTruck}
         title={truck.truckName}
-      />
+      /> */}
       <div className="card-info">
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
+        {/* <Collapse in={expanded} timeout="auto" unmountOnExit> */}
           <CardContent>
-            {truck.truckMenu.map(food => {
+            {recipes.map(recipe => {
               return (
-                <ul key={food.item} className="menu-item">
-                  <div className="foodname-description">
-                    <li>{food.item}</li>
-                    <li className="description">{food.description}</li>
-                  </div>
-                  <li>{food.price}</li>
-                </ul>
+              <RecipeCard>
               );
             })}
           </CardContent>
-        </Collapse>
+        {/* </Collapse> */}
       </div>
     </Card>
   );
