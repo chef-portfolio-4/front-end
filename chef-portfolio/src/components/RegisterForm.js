@@ -2,30 +2,33 @@ import React, { useState } from "react";
 import { Button, FormGroup, Label, Input, FormText } from "reactstrap";
 
 export default function Register(props) {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
+  const [userCreds, setUserCreds] = useState({ username: "", password: "", name: "", email:"", location:"" });
 
   function validateForm() {
-    return userName.length > 0 && password.length > 6;
+    return userCreds.password.length > 0 && userCreds.password.length > 6;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
   }
 
+  let onChange = e => {
+    setUserCreds({ ...userCreds, [e.target.name]: e.target.value });
+
   return (
     <div className="Register">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(event, props) => {
+          event.preventDefault();
+          handleSubmit(props);
+        }}>
         <FormGroup>
           <Label>Email</Label>
           <Input
             autoFocus
             name="username"
-            type="email"
-            value={userName}
-            placeholder="YourEmail@email.com"
+            type="text"
+            value={userCreds.username}
+            placeholder="jdoe123"
             onChange={e => setUserName(e.target.value)}
             required
           />
@@ -36,7 +39,7 @@ export default function Register(props) {
           <Input
             name="password"
             type="password"
-            value={password}
+            value={userCreds.password}
             placeholder="*******"
             onChange={e => setPassword(e.target.value)}
             required

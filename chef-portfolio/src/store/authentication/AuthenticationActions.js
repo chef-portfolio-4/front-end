@@ -2,9 +2,9 @@
 import { SUCCESS, LOGOUT } from "./AuthenticationTypes";
 import axiosWithAuth from "../../utils/AxiosWithAuth";
 
-export const register = (values, history) => dispatch => {
+export const register = (event, history) => dispatch => {
   axiosWithAuth()
-    .post("", values)
+    .post("", event)
     .then(dispatch({ type: SUCCESS }))
     .catch(error => {
       console.log("nope");
@@ -13,8 +13,8 @@ export const register = (values, history) => dispatch => {
 };
 
 // store token and get user data for subsequent actions
-export const login = role => {
-  return { type: SUCCESS, payload: role };
+export const login = token => {
+  return { type: SUCCESS, payload: token };
 };
 
 export const logout = () => dispatch => {

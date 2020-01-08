@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
 // Three rules for the PrivateRoute component:
 // 1. It has the same API as <Route />.
@@ -11,7 +11,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props => {
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem("token")) {
           // render component from props
           return <Component {...props} />;
         } else {
@@ -23,10 +23,3 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 export default PrivateRoute;
-
-// const Component = props.component;
-// const rest = {
-//   path: props.path,
-//   exact: props.exact,
-//    (Other props that I'm forgetting.....)
-// }

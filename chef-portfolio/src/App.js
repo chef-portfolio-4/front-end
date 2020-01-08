@@ -1,11 +1,15 @@
 import React from "react";
-import { Route, NavLink, Switch, withRouter } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
 import ChefDashboard from "./components/chef/ChefDashboard";
 import Register from "./components/RegisterForm";
+import RecipesList from "./components/recipe/RecipesList";
+// import RecipeCard from "./components/recipe/RecipeCard";
+import RecipeDetails from "./components/recipe/RecipeDetails";
+
 // import "./App.css";
 
 function App() {
@@ -24,16 +28,21 @@ function App() {
         <NavLink className="nav-login" to="/Login">
           Login
         </NavLink>
+        <NavLink className="nav-chef" to="/ChefDashboard">
+          My Dashboard
+        </NavLink>
       </nav>
 
       <section>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route
+          <Route path="/recipeslist" component={RecipesList} />
+          <Route path="/recipedetails" component={RecipeDetails} />
+          {/* <Route
             path="/chefdashboard"
             render={props => <ChefDashboard {...props} />}
-          />
+          /> */}
           <Route path="/" component={Homepage} />
           <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />

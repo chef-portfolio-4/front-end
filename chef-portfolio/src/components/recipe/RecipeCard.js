@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
 // import axios from "axios";
 import { connect } from "react-redux";
 
@@ -26,6 +26,11 @@ import EditRecipeForm from "./EditRecipeForm";
 // };
 
 const RecipeCard = props => {
+  let history = useHistory();
+  function handleClick() {
+    history.push(`/recipedetails/${props.recipe.id}`);
+  }
+
   console.log(props, "props in recipeCard");
   return (
     <div className="recipe-card">
@@ -38,7 +43,8 @@ const RecipeCard = props => {
       <button
         key={props.recipe.id}
         // color="danger"
-        onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
+        // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
+        onClick={handleClick}
       >
         View Instructions
       </button>
@@ -48,7 +54,7 @@ const RecipeCard = props => {
 
 // const mapStateToProps = state => {
 //   return {
-//     role: state.auth.role
+//     recipes: state.recipe.recipes
 //   };
 // };
 

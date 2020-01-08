@@ -1,30 +1,32 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import RecipeCard from "./RecipeCard";
 // import { singleRecipe } from '../actions/recipeActions';
 // import Header from './../components/header';
 // import Footer from './../components/footer';
 import {
   Card,
-  CardImg,
+  // CardImg,
   CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardFooter,
-  CardHeader
+  // CardBody,
+  CardTitle
+  // CardSubtitle,
+  // CardFooter,
+  // CardHeader
 } from "reactstrap";
 
 class RecipeDetails extends Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props.RecipeDetails(id);
+    // const id = this.props.match.params.id;
+    // this.props.RecipeDetails(id);
+    console.log(this.props, "props in recipeDetails");
   }
   render() {
     const { recipe } = this.props;
     if (recipe) {
       return (
-        <Fragment>
-          <Header />
+        <div>
+          <div />
           <section id="boxes">
             <div className="container">
               <h1>
@@ -33,6 +35,7 @@ class RecipeDetails extends Component {
               <div className="row"></div>
               <div>
                 <Card>
+                  <RecipeCard />
                   {/* <CardImg src={recipe.image} alt="recipe" />
                   <CardBody>
                   <CardHeader><h4>{recipe.chefName}</h4></CardHeader> */}
@@ -48,12 +51,12 @@ class RecipeDetails extends Component {
             </div>
           </section>
           {/* <Footer/> */}
-        </Fragment>
+        </div>
       );
     } else return <h1>Loading...</h1>;
   }
 }
-const mapStateToProps = state => ({
-  recipe: state.recipe.recipes
-});
-export default connect(() => mapStateToProps, { singleRecipe })(RecipeDetails);
+// const mapStateToProps = state => ({
+//   recipe: state.recipe.recipes
+// });
+export default connect(null)(RecipeDetails);

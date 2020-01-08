@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "../recipe/RecipeCard";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 const ChefDashboard = props => {
+  console.log(props, "props in chefDashboard");
+  const isLogged = useSelector(state => state.isAuthenticated);
+  console.log(isLogged, "isLogged");
   return (
     <div className="dashboard">
+      {console.log(props, "test")}
       {props.recipes.map(recipe => {
         return (
           <div className="cards">
@@ -23,8 +27,9 @@ const ChefDashboard = props => {
 };
 
 const mapStateToProps = state => {
+  console.log(state, "state");
   return {
-    recipes: state.myRecipes
+    myRecipes: state.recipes
   };
 };
 
