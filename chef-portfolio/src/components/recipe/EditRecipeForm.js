@@ -8,7 +8,7 @@ import React, { useState } from "react";
 //   AddTruckCard
 // } from "../styles/StyledComponents";
 
-const AddRecipeForm = props => {
+const EditRecipeForm = props => {
   const [recipe, setRecipe] = useState({
     recipeName: "",
     recipeImage: "",
@@ -30,11 +30,11 @@ const AddRecipeForm = props => {
   };
 
   return (
-    <FormDiv>
+    <div>
       <form onSubmit={submitForm}>
-        <H1>Add your recipe info here!</H1>
+        <h1>Add your recipe info here!</h1>
 
-        <CustomInput
+        <input
           placeholder="Recipe Name"
           id="name"
           type="text"
@@ -59,7 +59,7 @@ const AddRecipeForm = props => {
         </select>
 
         <h3>Please Add Recipe Ingredients Here!</h3>
-        <CustomInput
+        <input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
@@ -69,7 +69,7 @@ const AddRecipeForm = props => {
         />
 
         <h3>Please Add Recipe Instructions Here!</h3>
-        <CustomInput
+        <input
           placeholder="Instructions"
           id="instructions"
           type="text"
@@ -78,9 +78,9 @@ const AddRecipeForm = props => {
           value={recipe.instructions}
         />
 
-        <CustomBtn type="submit">Submit Your Recipe!</CustomBtn>
+        <btn type="submit">Submit Your Recipe!</btn>
       </form>
-    </FormDiv>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 // Action Types
 import { SUCCESS, LOGOUT } from "./AuthenticationTypes";
-import axiosWithAuth from "./../../utils/AxiosWithAuth";
+import axiosWithAuth from "../../utils/AxiosWithAuth";
 
 export const register = (values, history) => dispatch => {
   axiosWithAuth()

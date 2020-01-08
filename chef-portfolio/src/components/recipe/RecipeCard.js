@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
 import { connect } from "react-redux";
 
-import { DELETE_RECIPE, EDIT_RECIPE } from "../../store/recipe/RecipeActions";
+import { deleteRecipe } from "../../store/recipe/RecipeActions";
+import EditRecipeForm from "./EditRecipeForm";
+
+import { Card, Button, CardHeader } from "reactstrap";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-const goToEditForm = () => {
+const goToEditForm = props => {
   props.history.push({
     pathname: "/editrecipeform",
     state: {
-      name: recipe.recipeName
+      name: props.recipeName
     }
   });
 };
 
-const remove = () => {
-  props.deleteRecipe(recipe.id);
-  props.history.push("/chefdashboard");
-};
+// const remove = props => {
+//   props.deleteRecipe(recipe.id);
+//   props.history.push("/chefdashboard");
+// };
 
-const RecipeCard = () => {
+const RecipeCard = props => {
   return (
     <Card className="recipe-card">
-      <CardHeader title={recipe.recipeName} subheader={recipe.recipeType} />
+      <CardHeader title={props.recipeName} subheader={props.recipeType} />
       {/* <CardMedia
         className={classes.media}
         image={placeholderImage}
         title={recipe.recipeName}
       /> */}
-      <div className="card-info">
+      {/*<div className="card-info">
         <CardContent>
-          {props.role === "diner" && (
+           {props.role === "diner" && (
             <div class-name="card-rate-heart">
               <div className="user-rate">
                 <p className="rate-title">Add your rating</p>
@@ -41,8 +44,8 @@ const RecipeCard = () => {
               </div>
               <Fav truck={truck} />
             </div>
-          )}
-          {props.role === "operator" && (
+          )} */}
+      {/* {props.role === "operator" && (
             <div className="edit-delete-buttons">
               <Button
                 className="edit-btn"
@@ -55,10 +58,10 @@ const RecipeCard = () => {
                 Delete Truck
               </Button>
             </div>
-          )}
+          )} 
         </CardContent>
-      </div>
-      <div className="card-menu">
+      </div>*/}
+      {/* <div className="card-menu">
         <CardContent>
           {recipes.map(recipe => {
             return (
@@ -70,8 +73,8 @@ const RecipeCard = () => {
             );
           })}
         </CardContent>
-        {/* </Collapse> */}
-      </div>
+        </Collapse>
+      </div> */}
     </Card>
   );
 };
@@ -82,6 +85,4 @@ const RecipeCard = () => {
 //   };
 // };
 
-export default connect(mapStateToProps, { DELETE_RECIPE, EDIT_RECIPE })(
-  RecipeCard
-);
+export default connect(null, { deleteRecipe, EditRecipeForm })(RecipeCard);

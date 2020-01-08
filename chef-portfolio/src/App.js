@@ -4,7 +4,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
-import ChefDashboard from "./components/ChefDashboard";
+import ChefDashboard from "./components/chef/ChefDashboard";
+import Register from "./components/RegisterForm";
 // import "./App.css";
 
 function App() {
@@ -28,9 +29,12 @@ function App() {
       <section>
         <Switch>
           <Route path="/login" component={Login} />
-          {/* <Route path="/registerform" component={Register} />
-            <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
-          <Route path="/homepage" component={Homepage} />
+          <Route path="/register" component={Register} />
+          <Route
+            path="/chefdashboard"
+            render={props => <ChefDashboard {...props} />}
+          />
+          <Route path="/" component={Homepage} />
           <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}

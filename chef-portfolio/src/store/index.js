@@ -1,16 +1,15 @@
-export { authenticationReducer } from "./AuthenticationReducer";
-export { login } from "./AuthenticationActions";
+//Libraries
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 // Reducers
-import { authenticationReducer } from "./authentication/AuthenticationReducer";
-import { chefReducer } from "./chef/ChefReducer";
+import { authenticationReducer } from "./authentication/AuthenticationReducers";
+import { recipeReducer } from "./recipe/RecipeReducer";
 
 //
 const combinedReducers = combineReducers({
   auth: authenticationReducer,
-  chef: chefReducer
+  recipe: recipeReducer
 });
 
 const store = createStore(
