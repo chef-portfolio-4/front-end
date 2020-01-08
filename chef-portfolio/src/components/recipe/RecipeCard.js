@@ -35,6 +35,13 @@ const RecipeCard = props => {
 
       <button>Edit Recipe</button>
       <button>Delete Recipe</button>
+      <button
+        key={props.recipe.id}
+        // color="danger"
+        onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
+      >
+        View Instructions
+      </button>
     </div>
   );
 };
