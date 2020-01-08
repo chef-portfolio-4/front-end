@@ -7,9 +7,8 @@ export default function Register(props) {
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
 
-
     function validateForm() {
-        return userName.length > 0 && password.length > 6 
+        return userName.length > 0 && password.length > 6
     }
 
     function handleSubmit(event) {
@@ -66,7 +65,7 @@ export default function Register(props) {
                         required
                     />
                 </FormGroup>
-                <Button color="primary" block size="lg"  type="submit" disabled={!validateForm()}>
+                <Button color="primary" block size="lg" type="submit" disabled={!validateForm()}>
                     Register
                 </Button>
             </form>
