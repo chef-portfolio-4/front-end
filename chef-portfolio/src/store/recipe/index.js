@@ -1,1 +1,1 @@
-export { chefReducer } from "./RecipeReducer";
+export { recipeReducer } from "./RecipeReducer";

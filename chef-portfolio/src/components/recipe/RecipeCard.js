@@ -6,19 +6,19 @@ import { connect } from "react-redux";
 import { deleteRecipe } from "../../store/recipe/RecipeActions";
 import EditRecipeForm from "./EditRecipeForm";
 
-import { Card, Button, CardHeader } from "reactstrap";
+// import { Card, Button, CardHeader } from "reactstrap";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-const goToEditForm = props => {
-  props.history.push({
-    pathname: "/editrecipeform",
-    state: {
-      name: props.recipeName
-    }
-  });
-};
+// const goToEditForm = props => {
+//   props.history.push({
+//     pathname: "/editrecipeform",
+//     state: {
+//       name: props.recipeName
+//     }
+//   });
+// };
 
 // const remove = props => {
 //   props.deleteRecipe(recipe.id);
@@ -26,56 +26,16 @@ const goToEditForm = props => {
 // };
 
 const RecipeCard = props => {
+  console.log(props, "props in recipeCard");
   return (
-    <Card className="recipe-card">
-      <CardHeader title={props.recipeName} subheader={props.recipeType} />
-      {/* <CardMedia
-        className={classes.media}
-        image={placeholderImage}
-        title={recipe.recipeName}
-      /> */}
-      {/*<div className="card-info">
-        <CardContent>
-           {props.role === "diner" && (
-            <div class-name="card-rate-heart">
-              <div className="user-rate">
-                <p className="rate-title">Add your rating</p>
-                <CustomerRating />
-              </div>
-              <Fav truck={truck} />
-            </div>
-          )} */}
-      {/* {props.role === "operator" && (
-            <div className="edit-delete-buttons">
-              <Button
-                className="edit-btn"
-                color="primary"
-                onClick={goToEditForm}
-              >
-                Edit Truck
-              </Button>
-              <Button className="delete-btn" color="secondary" onClick={remove}>
-                Delete Truck
-              </Button>
-            </div>
-          )} 
-        </CardContent>
-      </div>*/}
-      {/* <div className="card-menu">
-        <CardContent>
-          {recipes.map(recipe => {
-            return (
-              <ul key={recipe.recipeName} className="menu-item">
-                <div className="foodname-description">
-                  <li>{recipe.recipeType}</li>
-                </div>
-              </ul>
-            );
-          })}
-        </CardContent>
-        </Collapse>
-      </div> */}
-    </Card>
+    <div className="recipe-card">
+      <h3>{props.recipe.recipeName}</h3>
+      <div>{props.recipe.recipeType}</div>
+      <div>{props.recipe.ingredients}</div>
+
+      <button>Edit Recipe</button>
+      <button>Delete Recipe</button>
+    </div>
   );
 };
 

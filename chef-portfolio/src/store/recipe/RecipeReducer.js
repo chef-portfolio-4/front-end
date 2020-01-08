@@ -5,13 +5,24 @@ const recipeInitialState = {
     {
       recipeName: "Pork & Beans",
       id: 1,
-      mealType: "lunch",
-      img: ""
+      // recipeImage: "",
+      recipeType: "lunch",
+      ingredients: "",
+      instructions: ""
+    },
+    {
+      recipeName: "Rosemary Brown Sugar Bacon",
+      id: 2,
+      // recipeImage: "",
+      recipeType: "breakfast",
+      ingredients: "",
+      instructions: ""
     }
   ],
   newRecipe: {
     recipeName: "",
-    recipeImage: "",
+    id: "",
+    // recipeImage: "",
     recipeType: "",
     ingredients: "",
     instructions: ""
@@ -37,6 +48,7 @@ export const recipeReducer = (state = recipeInitialState, action) => {
       };
 
     default:
+      console.log(state, "state");
       return state;
   }
 };
