@@ -6,7 +6,7 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return userName.length > 0 && password.length > 0;
+    return userName.length > 0
   }
 
   function handleSubmit(event) {
@@ -23,22 +23,26 @@ export default function Login(props) {
             name="username"
             type="email"
             value={userName}
+            placeholder="YourEmail@email.com"
             onChange={e => setUserName(e.target.value)}
+            required
           />
         </FormGroup>
         <FormGroup>
           <Label>Password</Label>
           <Input
             name="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
             type="password"
+            value={password}
+            placeholder="*******"
+            onChange={e => setPassword(e.target.value)}
+            required
           />
         </FormGroup>
-        <Button block size="lg" disabled={!validateForm()} type="submit">
+        <Button color="primary" block size="lg" disabled={!validateForm()} type="submit">
           Login
         </Button>
-        <Button block size="lg" disabled={!validateForm()} type="submit">
+        <Button color="danger" block size="lg" disabled={!validateForm()} type="submit">
           Forgot Password?
         </Button>
       </form>

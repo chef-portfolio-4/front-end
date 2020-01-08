@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FormGroup, Label, Input } from "reactstrap";
+import { Button, FormGroup, Label, Input, FormText } from "reactstrap";
 
 export default function Register(props) {
     const [userName, setUserName] = useState("");
@@ -9,7 +9,7 @@ export default function Register(props) {
 
 
     function validateForm() {
-        return userName.length > 0 && password.length > 0 && name.length > 0 && location.length > 0;
+        return userName.length > 0 && password.length > 6 
     }
 
     function handleSubmit(event) {
@@ -26,8 +26,11 @@ export default function Register(props) {
                         name="username"
                         type="email"
                         value={userName}
+                        placeholder="YourEmail@email.com"
                         onChange={e => setUserName(e.target.value)}
+                        required
                     />
+                    <FormText>You'll use this to Login everytime.</FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label>Password</Label>
@@ -35,8 +38,11 @@ export default function Register(props) {
                         name="password"
                         type="password"
                         value={password}
+                        placeholder="*******"
                         onChange={e => setPassword(e.target.value)}
+                        required
                     />
+                    <FormText>Must be atleast 7 characters long.</FormText>
                 </FormGroup>
                 <FormGroup>
                     <Label>Name</Label>
@@ -44,7 +50,9 @@ export default function Register(props) {
                         name="name"
                         type="text"
                         value={name}
+                        placeholder="John Doe"
                         onChange={e => setName(e.target.value)}
+                        required
                     />
                 </FormGroup>
                 <FormGroup>
@@ -53,12 +61,14 @@ export default function Register(props) {
                         name="location"
                         type="text"
                         value={location}
+                        placeholder="California, USA"
                         onChange={e => setLocation(e.target.value)}
+                        required
                     />
                 </FormGroup>
-                <Button block size="lg" disabled={!validateForm()} type="submit">
+                <Button color="primary" block size="lg"  type="submit" disabled={!validateForm()}>
                     Register
-        </Button>
+                </Button>
             </form>
         </div>
     );
