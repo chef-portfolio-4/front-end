@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { deleteRecipe } from "../../store/recipe/RecipeActions";
 import EditRecipeForm from "./EditRecipeForm";
 
-import { Card, CardTitle, CardText, Button, CardHeader } from "reactstrap";
+import { Card, CardText, Button, CardHeader } from "reactstrap";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
