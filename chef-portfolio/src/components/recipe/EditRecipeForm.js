@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card, Button, CardHeader } from "reactstrap";
 
 // import {
 //   FormDiv,
@@ -30,8 +31,8 @@ const EditRecipeForm = props => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitForm}>
+    <div className="formdiv">
+      <form className="forms" onSubmit={submitForm}>
         <h1>Add your recipe info here!</h1>
 
         <input
@@ -77,8 +78,8 @@ const EditRecipeForm = props => {
           onChange={handleChanges}
           value={recipe.instructions}
         />
-
-        <button type="submit">Submit Your Recipe!</button>
+  <div>
+        <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
       </form>
     </div>
   );

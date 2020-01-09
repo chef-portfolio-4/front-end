@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
+import { Nav, NavItem } from 'reactstrap';
 import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
@@ -14,26 +15,26 @@ import AddRecipeForm from "./components/recipe/AddRecipeForm";
 function App() {
   return (
     <div className="App">
-      <nav>
-        <NavLink className="nav-home" to="/Homepage">
-          Home
-        </NavLink>
-        <NavLink className="nav-post" to="/AddRecipeForm">
-          Add_Recipe
-        </NavLink>
-        <NavLink className="nav-reg" to="/Register">
-          Register
-        </NavLink>
-        <NavLink className="nav-login" to="/Login">
-          Login
-        </NavLink>
-        <NavLink className="nav-chef" to="/ChefDashboard">
-          My Dashboard
-        </NavLink>
-        <NavLink className="nav-edit" to="/EditRecipeForm">
-          Edit_Recipe
-        </NavLink>
-      </nav>
+      <Nav>
+        <NavItem>
+        <NavLink className="nav home" to="/Homepage">Home</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink className="nav reg" to="/Register">Register</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink className="nav login" to="/Login">Login</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink className="nav chef" to="/ChefDashboard">Dashboard</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink className="nav edit" to="/EditRecipeForm">Edit Recipe</NavLink>
+        </NavItem>
+        </Nav>
 
       <section>
         <Switch>

@@ -16,7 +16,7 @@ const Register = () => {
   console.log(userCreds, "userCreds");
 
   function validateForm() {
-    return userCreds.password.length > 0 && userCreds.password.length > 6;
+    return userCreds.password.length > 6;
   }
 
   let onChange = e => {
@@ -24,7 +24,7 @@ const Register = () => {
   };
   const handleSubmit = props => {
     axiosWithAuth()
-      .post("/auth/login", userCreds)
+      .post("/auth/register", userCreds)
       .then(response => {
         localStorage.setItem("token", response.data.token);
         console.log(response.data, "response.data");
@@ -45,6 +45,7 @@ const Register = () => {
         <FormGroup>
           <Label>UserName</Label>
           <Input
+            autoFocus
             name="username"
             type="text"
             value={userCreds.username}
@@ -69,7 +70,6 @@ const Register = () => {
         <FormGroup>
           <Label>Name</Label>
           <Input
-            autoFocus
             name="name"
             type="text"
             value={userCreds.name}
@@ -81,7 +81,6 @@ const Register = () => {
         <FormGroup>
           <Label>Email</Label>
           <Input
-            autoFocus
             name="email"
             type="email"
             value={userCreds.email}
