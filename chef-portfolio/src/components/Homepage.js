@@ -1,7 +1,7 @@
 import React from "react";
-import RecipesList from "./RecipesList";
+import RecipesList from "./recipe/RecipesList";
 
-const Homepage = props => {
+const Homepage = () => {
   return (
     <div>
       <div>🍽 Chef Portfolio </div>

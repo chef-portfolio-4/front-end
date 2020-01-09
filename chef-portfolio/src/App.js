@@ -1,11 +1,13 @@
 import React from "react";
-import { Route, NavLink, Switch, withRouter } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
-import ChefDashboard from "./components/ChefDashboard";
-// import "./App.css";
+import ChefDashboard from "./components/chef/ChefDashboard";
+import Register from "./components/RegisterForm";
+import RecipesList from "./components/recipe/RecipesList";
+import RecipeDetails from "./components/recipe/RecipeDetails";
 
 function App() {
   return (
@@ -17,20 +19,28 @@ function App() {
         <NavLink className="nav-post" to="/Recipes">
           Add_Recipe
         </NavLink>
-        <NavLink className="nav-reg" to="/Register">
+        <NavLink className="nav-reg" to="/register">
           Register
         </NavLink>
         <NavLink className="nav-login" to="/Login">
           Login
+        </NavLink>
+        <NavLink className="nav-chef" to="/ChefDashboard">
+          My Dashboard
         </NavLink>
       </nav>
 
       <section>
         <Switch>
           <Route path="/login" component={Login} />
-          {/* <Route path="/registerform" component={Register} />
-            <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
-          <Route path="/homepage" component={Homepage} />
+          <Route path="/register" component={Register} />
+          <Route path="/recipeslist" component={RecipesList} />
+          <Route path="/recipedetails" component={RecipeDetails} />
+          {/* <Route
+            path="/chefdashboard"
+            render={props => <ChefDashboard {...props} />}
+          /> */}
+          <Route path="/" component={Homepage} />
           <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}
