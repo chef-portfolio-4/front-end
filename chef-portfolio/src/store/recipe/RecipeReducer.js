@@ -47,6 +47,37 @@ export const recipeReducer = (state = recipeInitialState, action) => {
         })
       };
 
+    case types.MODIFY_RECIPE:
+      return {
+        ...state,
+        recipe: action.payload
+        // recipes: [...state.recipes, state.newRecipe]
+      };
+
+    case types.GET_ALL_RECIPES:
+      return {
+        ...state,
+        recipes: [...state.recipes]
+      };
+
+    case types.GET_SINGLE_RECIPE:
+      return {
+        ...state,
+        recipes: [...state.recipes]
+      };
+
+    case types.GET_USER_RECIPES:
+      return {
+        ...state,
+        recipes: [...state.recipes]
+      };
+
+    case types.SEARCH_RECIPES:
+      return {
+        ...state,
+        recipes: [...state.recipes]
+      };
+
     default:
       // console.log(state, "state");
       return state;

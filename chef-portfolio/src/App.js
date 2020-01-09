@@ -8,6 +8,8 @@ import ChefDashboard from "./components/chef/ChefDashboard";
 import Register from "./components/RegisterForm";
 import RecipesList from "./components/recipe/RecipesList";
 import RecipeDetails from "./components/recipe/RecipeDetails";
+import EditRecipeForm from "./components/recipe/EditRecipeForm";
+import AddRecipeForm from "./components/recipe/AddRecipeForm";
 
 function App() {
   return (
@@ -16,10 +18,10 @@ function App() {
         <NavLink className="nav-home" to="/Homepage">
           Home
         </NavLink>
-        <NavLink className="nav-post" to="/Recipes">
+        <NavLink className="nav-post" to="/AddRecipeForm">
           Add_Recipe
         </NavLink>
-        <NavLink className="nav-reg" to="/register">
+        <NavLink className="nav-reg" to="/Register">
           Register
         </NavLink>
         <NavLink className="nav-login" to="/Login">
@@ -27,6 +29,9 @@ function App() {
         </NavLink>
         <NavLink className="nav-chef" to="/ChefDashboard">
           My Dashboard
+        </NavLink>
+        <NavLink className="nav-edit" to="/EditRecipeForm">
+          Edit_Recipe
         </NavLink>
       </nav>
 
@@ -36,6 +41,9 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/recipeslist" component={RecipesList} />
           <Route path="/recipedetails" component={RecipeDetails} />
+          <Route path="/editrecipeform" component={EditRecipeForm} />
+          <Route path="/addrecipeform" component={AddRecipeForm} />
+
           {/* <Route
             path="/chefdashboard"
             render={props => <ChefDashboard {...props} />}

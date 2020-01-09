@@ -1,7 +1,6 @@
 import { LOGOUT, SUCCESS } from "./AuthenticationTypes";
 
 const authenticationInitialState = {
-  // role: "",
   name: "",
   isAuthenticated: false
 };
@@ -15,12 +14,10 @@ export const authenticationReducer = (
       return {
         ...state,
         isAuthenticated: true
-        // role: action.payload
       };
 
     case LOGOUT:
       return {
-        // role: "",
         name: "",
         isAuthenticated: false
       };
