@@ -5,10 +5,9 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../store/authentication/AuthenticationActions";
 
-const Login = props => {
+const Login = () => {
   const [userCreds, setUserCreds] = useState({ username: "", password: "" });
   console.log(userCreds, "userCreds");
-  // console.log(props, "props");
 
   function validateForm() {
     return userCreds.username.length > 0;
@@ -20,7 +19,7 @@ const Login = props => {
 
   const history = useHistory();
 
-  const handleSubmit = props => {
+  const handleSubmit = () => {
     axiosWithAuth()
       .post("/auth/login", userCreds)
       .then(response => {
