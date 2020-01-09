@@ -1,6 +1,7 @@
 import * as types from "./RecipeTypes";
 
 const recipeInitialState = {
+  user: {chef_id: ""},
   recipes: [
     {
       recipeName: "Pork & Beans",
@@ -8,7 +9,8 @@ const recipeInitialState = {
       // recipeImage: "",
       recipeType: "lunch",
       ingredients: "",
-      instructions: ""
+      instructions: "",
+      chef_id: 1
     },
     {
       recipeName: "Rosemary Brown Sugar Bacon",
@@ -16,7 +18,8 @@ const recipeInitialState = {
       // recipeImage: "",
       recipeType: "breakfast",
       ingredients: "",
-      instructions: ""
+      instructions: "",
+      chef_id:2
     }
   ],
   newRecipe: {

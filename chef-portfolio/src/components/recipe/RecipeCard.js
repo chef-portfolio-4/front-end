@@ -34,9 +34,9 @@ const RecipeCard = props => {
   console.log(props, "props in recipeCard");
   return (
     <div className="recipe-card">
-      <h3>{props.recipe.recipeName}</h3>
-      <div>{props.recipe.recipeType}</div>
-      <div>{props.recipe.ingredients}</div>
+      <h3>{props.recipe.name}</h3>
+      {/* <div>{props.recipe.meal-type}</div> */}
+      <div>{props.recipe.description}</div>
 
       <button>Edit Recipe</button>
       <button>Delete Recipe</button>
