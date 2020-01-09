@@ -43,7 +43,7 @@ const Register = () => {
         }}
       >
         <FormGroup>
-          <Label>UserName</Label>
+          <Label>Username</Label>
           <Input
             autoFocus
             name="username"
