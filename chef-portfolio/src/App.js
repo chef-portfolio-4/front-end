@@ -7,10 +7,7 @@ import Login from "./components/LoginForm";
 import ChefDashboard from "./components/chef/ChefDashboard";
 import Register from "./components/RegisterForm";
 import RecipesList from "./components/recipe/RecipesList";
-// import RecipeCard from "./components/recipe/RecipeCard";
 import RecipeDetails from "./components/recipe/RecipeDetails";
-
-// import "./App.css";
 
 function App() {
   return (
@@ -22,7 +19,7 @@ function App() {
         <NavLink className="nav-post" to="/Recipes">
           Add_Recipe
         </NavLink>
-        <NavLink className="nav-reg" to="/Register">
+        <NavLink className="nav-reg" to="/register">
           Register
         </NavLink>
         <NavLink className="nav-login" to="/Login">
