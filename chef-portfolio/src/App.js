@@ -1,11 +1,15 @@
 import React from "react";
-import { Route, NavLink, Switch, withRouter } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
-import Register from "./components/RegisterForm"
-// import "./App.css";
+import ChefDashboard from "./components/chef/ChefDashboard";
+import Register from "./components/RegisterForm";
+import RecipesList from "./components/recipe/RecipesList";
+import RecipeDetails from "./components/recipe/RecipeDetails";
+import EditRecipeForm from "./components/recipe/EditRecipeForm";
+import AddRecipeForm from "./components/recipe/AddRecipeForm";
 
 function App() {
   return (
@@ -14,7 +18,7 @@ function App() {
         <NavLink className="nav-home" to="/Homepage">
           Home
         </NavLink>
-        <NavLink className="nav-post" to="/Recipes">
+        <NavLink className="nav-post" to="/AddRecipeForm">
           Add_Recipe
         </NavLink>
         <NavLink className="nav-reg" to="/Register">
@@ -23,15 +27,29 @@ function App() {
         <NavLink className="nav-login" to="/Login">
           Login
         </NavLink>
+        <NavLink className="nav-chef" to="/ChefDashboard">
+          My Dashboard
+        </NavLink>
+        <NavLink className="nav-edit" to="/EditRecipeForm">
+          Edit_Recipe
+        </NavLink>
       </nav>
 
       <section>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {/* <Route path="/chefdashboard" render={props => <ChefDashBoard {...props} />} /> */}
-          <Route path="/homepage" component={Homepage} />
-          <PrivateRoute exact path="/chefdashboard" />
+          <Route path="/recipeslist" component={RecipesList} />
+          <Route path="/recipedetails" component={RecipeDetails} />
+          <Route path="/editrecipeform" component={EditRecipeForm} />
+          <Route path="/addrecipeform" component={AddRecipeForm} />
+
+          {/* <Route
+            path="/chefdashboard"
+            render={props => <ChefDashboard {...props} />}
+          /> */}
+          <Route path="/" component={Homepage} />
+          <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}
         </Switch>
