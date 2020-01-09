@@ -35,7 +35,7 @@ const RecipeCard = props => {
   return (
     <div className="recipe-card">
       <h3>{props.recipe.name}</h3>
-      {/* <div>{props.recipe.meal-type}</div> */}
+      <div>{props.recipe.meal_type}</div>
       <div>{props.recipe.description}</div>
 
       <button>Edit Recipe</button>
