@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 // import { deleteRecipe } from "../../store/operator/OperatorActions";
 import RecipeCard from "./RecipeCard";
 
 import { Card } from "reactstrap";
 
-const RecipeList = () => {
-  const [recipes, setRecipes] = useState([]);
+import { getAllRecipes } from "../../store/recipe/RecipeActions";
+
+const RecipeList = props => {
+  const [recipes] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get("https://chefportfolio2020.herokuapp.com/api/recipes")
-      .then(res => {
-        console.log(res.data, "res.data");
-        setRecipes(res.data);
-      });
+    dispatch(getAllRecipes());
+    console.log("hello");
   }, []);
-  // if (recipes.length === 0) {
-  //   return <h2>Loading...</h2>;
-  // }
+
+  // if (getAllRecipes) {
+  //   return <h2>Loading Recipes...</h2>;
+  // } else if (getAllSuccess)
   return (
     <Card className="recipe-card">
       <div className="card-info">
         <div>
-          {recipes.map(recipe => {
+          {/* {dispatch(getAllSuccess())} */}
+          {console.log(recipes, "recipes")}
+          {props.recipes.map(recipe => {
             return <RecipeCard key={recipe.id} recipe={recipe} />;
           })}
         </div>
@@ -33,11 +35,11 @@ const RecipeList = () => {
   );
 };
 
-const mapStateToProps = state => {
-  // console.log(state, "state, in recipesList");
+const mapStateToProps = ({ recipeReducer }) => {
+  console.log(recipeReducer, "recipeReducer, in recipesList");
   return {
-    recipes: state.recipe.recipes
+    recipes: recipeReducer.recipes
   };
 };
 
-export default connect(mapStateToProps)(RecipeList);
+export default connect(mapStateToProps, { getAllRecipes })(RecipeList);

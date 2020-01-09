@@ -24,8 +24,9 @@ const Login = () => {
       .post("/auth/login", userCreds)
       .then(response => {
         localStorage.setItem("token", response.data.token);
-        console.log(response.data, "response.data");
-        // props.login(response.data);
+        localStorage.setItem("userId", response.data.userId);
+        console.log(response.data, "****Login Form response****");
+        console.log(localStorage.userId, "****LocalStorage****");
         history.push("/chefdashboard");
       })
       .catch(err => console.log(err));

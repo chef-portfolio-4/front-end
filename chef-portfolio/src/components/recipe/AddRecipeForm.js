@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { addRecipe } from "../../store/recipe/RecipeActions";
 
 // import {
@@ -18,6 +19,7 @@ const AddRecipeForm = props => {
     instructions: ""
   });
   console.log(recipe, "addrecipeform");
+  console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -28,12 +30,13 @@ const AddRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
+
     console.log(recipe, "submitform recipe");
   };
 
   return (
     <div>
-      <form onSubmit={(addRecipe, submitForm)}>
+      <form onSubmit={addRecipe}>
         <h1>Add your recipe info here!</h1>
 
         <input
@@ -91,4 +94,13 @@ const AddRecipeForm = props => {
   );
 };
 
-export default AddRecipeForm;
+const mapStateToProps = state => {
+  console.log(state, "state, in recipesList");
+  return {
+    recipes: state.recipes
+  };
+};
+
+export default connect(mapStateToProps)(AddRecipeForm);
+
+// export default AddRecipeForm;

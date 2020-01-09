@@ -1,5 +1,6 @@
 // Action Types
 import axiosWithAuth from "../../utils/AxiosWithAuth";
+import axios from "axios";
 import {
   ADD_RECIPE,
   MODIFY_RECIPE,
@@ -7,7 +8,8 @@ import {
   GET_ALL_RECIPES,
   GET_SINGLE_RECIPE,
   GET_USER_RECIPES,
-  SEARCH_RECIPES
+  SEARCH_RECIPES,
+  GET_ALL_SUCCESS
 } from "./RecipeTypes";
 
 export const addRecipe = newRecipe => dispatch => {
@@ -38,12 +40,14 @@ export const deleteRecipe = (recipes, id) => dispatch => {
     });
 };
 
-export const getAllRecipes = recipes => dispatch => {
+export const getAllRecipes = () => dispatch => {
   dispatch({ type: GET_ALL_RECIPES });
-  axiosWithAuth()
-    .get("/recipes")
+  console.log("hello again");
+  axios
+    .get("https://chefportfolio2020.herokuapp.com/api/recipes")
     .then(res => {
-      dispatch(getAllRecipes(res.data, recipes));
+      dispatch({ type: GET_ALL_SUCCESS, payload: res.data });
+      console.log(res.data, "GET_ALL_RECIPES_SUCCESS res.data");
     })
     .catch(error => {
       throw error;
