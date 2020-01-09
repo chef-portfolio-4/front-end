@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "reactstrap";
+import { Button, Label, Input } from "reactstrap";
 
 // import {
 //   FormDiv,
@@ -33,9 +33,9 @@ const EditRecipeForm = props => {
   return (
     <div className="formdiv">
       <form className="forms" onSubmit={submitForm}>
-        <h1>Add your recipe info here!</h1>
+        <Label>Add your recipe info here!</Label>
 
-        <input
+        <Input
           placeholder="Recipe Name"
           id="name"
           type="text"
@@ -44,8 +44,9 @@ const EditRecipeForm = props => {
           value={recipe.recipeName}
         />
 
-        <h3>Please Select a Meal Type!</h3>
-        <select
+        <Label>Please Select a Meal Type!</Label>
+        <Input
+          type="select"
           name="recipeType"
           id="cuisine"
           onChange={handleChanges}
@@ -57,10 +58,10 @@ const EditRecipeForm = props => {
           <option value="appetizer">Appetizer</option>
           <option value="dinner">Dinner</option>
           <option value="dessert">Dessert</option>
-        </select>
+          </Input>
 
-        <h3>Please Add Recipe Ingredients Here!</h3>
-        <input
+        <Label>Please Add Recipe Ingredients Here!</Label>
+        <Input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
@@ -69,8 +70,8 @@ const EditRecipeForm = props => {
           value={recipe.ingredients}
         />
 
-        <h3>Please Add Recipe Instructions Here!</h3>
-        <input
+        <Label>Please Add Recipe Instructions Here!</Label>
+        <Input
           placeholder="Instructions"
           id="instructions"
           type="text"
