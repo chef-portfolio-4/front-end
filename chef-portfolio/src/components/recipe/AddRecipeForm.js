@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addRecipe } from "../../store/recipe/RecipeActions";
 
 // import {
 //   FormDiv,
@@ -16,6 +17,7 @@ const AddRecipeForm = props => {
     ingredients: "",
     instructions: ""
   });
+  console.log(recipe, "addrecipeform");
 
   const handleChanges = e => {
     setRecipe({
@@ -26,26 +28,26 @@ const AddRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(recipe);
+    console.log(recipe, "submitform recipe");
   };
 
   return (
-    <FormDiv>
-      <form onSubmit={submitForm}>
-        <H1>Add your recipe info here!</H1>
+    <div>
+      <form onSubmit={(addRecipe, submitForm)}>
+        <h1>Add your recipe info here!</h1>
 
-        <CustomInput
+        <input
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="name"
+          name="recipeName"
           onChange={handleChanges}
           value={recipe.recipeName}
         />
 
         <h3>Please Select a Meal Type!</h3>
         <select
-          name="cuisine"
+          name="recipeType"
           id="cuisine"
           onChange={handleChanges}
           value={recipe.recipeType}
@@ -59,7 +61,7 @@ const AddRecipeForm = props => {
         </select>
 
         <h3>Please Add Recipe Ingredients Here!</h3>
-        <CustomInput
+        <input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
@@ -69,7 +71,7 @@ const AddRecipeForm = props => {
         />
 
         <h3>Please Add Recipe Instructions Here!</h3>
-        <CustomInput
+        <input
           placeholder="Instructions"
           id="instructions"
           type="text"
@@ -78,14 +80,14 @@ const AddRecipeForm = props => {
           value={recipe.instructions}
         />
 
-        <CustomBtn type="submit">Submit Your Recipe!</CustomBtn>
+        <button type="submit">Submit Your Recipe!</button>
       </form>
 
       {/* <AddRecipeCard>
         <p>Name: {recipe.recipeName}</p>
         <p>Meal type: {recipe.recipeType}</p>
       </AddRecipeCard> */}
-    </FormDiv>
+    </div>
   );
 };
 

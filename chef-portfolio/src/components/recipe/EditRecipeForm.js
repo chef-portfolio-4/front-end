@@ -11,7 +11,7 @@ import React, { useState } from "react";
 const EditRecipeForm = props => {
   const [recipe, setRecipe] = useState({
     recipeName: "",
-    recipeImage: "",
+    // recipeImage: "",
     recipeType: "",
     ingredients: "",
     instructions: ""
@@ -38,14 +38,14 @@ const EditRecipeForm = props => {
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="name"
+          name="recipeName"
           onChange={handleChanges}
           value={recipe.recipeName}
         />
 
         <h3>Please Select a Meal Type!</h3>
         <select
-          name="cuisine"
+          name="recipeType"
           id="cuisine"
           onChange={handleChanges}
           value={recipe.recipeType}
@@ -78,7 +78,7 @@ const EditRecipeForm = props => {
           value={recipe.instructions}
         />
 
-        <btn type="submit">Submit Your Recipe!</btn>
+        <button type="submit">Submit Your Recipe!</button>
       </form>
     </div>
   );
