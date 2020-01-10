@@ -9,6 +9,8 @@ import EditRecipeForm from "./EditRecipeForm";
 // import history from "../history";
 
 import { Card, CardText, Button, CardHeader } from "reactstrap";
+// import image1 from "../image"
+
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
@@ -31,6 +33,7 @@ const RecipeCard = props => {
     return (
       <div className="recipe-card">
         <Card>
+         <img className="foodImg" src={"https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"} />
           <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
           <CardText className="cardtext">{props.recipe.meal_type}</CardText>
           <CardText className="cardtext">{props.recipe.description}</CardText>

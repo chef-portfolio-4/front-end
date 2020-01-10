@@ -26,6 +26,7 @@ setRecipes(recipes)
  };
 
  return (
+     
     <section className="search-form">
       <form>
         <input
