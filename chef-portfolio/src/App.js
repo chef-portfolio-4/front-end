@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Nav>
         <NavItem>
-        <NavLink className="nav home" to="/Homepage">Home</NavLink>
+        <NavLink className="nav home" to="/Homepage">🍽 Home</NavLink>
         </NavItem>
         <NavItem>
         <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
