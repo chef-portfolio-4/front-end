@@ -57,7 +57,7 @@ const EditRecipeForm = props => {
   return (
     <div className="formdiv">
       <form className="forms" onSubmit={submitForm}>
-        <Label>Add your recipe info here!</Label>
+        <Label>Edit your recipe info here!</Label>
 
         <Input
           placeholder="Recipe Name"
@@ -67,7 +67,8 @@ const EditRecipeForm = props => {
           onChange={handleChanges}
           value={recipe.name}
         />
-        <input
+        <Label>Add a Description</Label>
+        <Input
           placeholder="Description"
           id="description"
           type="text"
@@ -75,8 +76,8 @@ const EditRecipeForm = props => {
           onChange={handleChanges}
           value={recipe.description}
         />
-
-        <input
+        <Label>Estimated time to Cook</Label>
+        <Input
           placeholder="Total Time"
           id="time"
           type="text"

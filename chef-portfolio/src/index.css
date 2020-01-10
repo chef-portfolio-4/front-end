@@ -38,13 +38,13 @@ code {
   font-size:1.5rem;
 }
 
-.buttons {
-  margin:2% 2%;
-}
-
 .buttondiv {
   display:flex;
   margin:0 auto;
+}
+
+.buttons {
+  margin:0% 2%;
 }
 
 .recipe-card {

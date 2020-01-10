@@ -51,7 +51,8 @@ const AddRecipeForm = props => {
           onChange={handleChanges}
           value={recipe.name}
         />
-        <input
+        <Label>Add a Description</Label>
+        <Input
           placeholder="Description"
           id="description"
           type="text"
@@ -59,8 +60,8 @@ const AddRecipeForm = props => {
           onChange={handleChanges}
           value={recipe.description}
         />
-
-        <input
+        <Label>Estimated time to Cook</Label>
+        <Input
           placeholder="Total Time"
           id="time"
           type="text"
