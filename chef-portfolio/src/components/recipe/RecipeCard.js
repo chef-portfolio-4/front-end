@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 // import axios from "axios";
 import { connect } from "react-redux";
 
@@ -27,9 +27,9 @@ import EditRecipeForm from "./EditRecipeForm";
 
 const RecipeCard = props => {
   let history = useHistory();
-  function handleClick() {
-    history.push(`/recipedetails/${props.recipe.id}`);
-  }
+  // function handleClick() {
+  //   ;
+  // }
 
   console.log(props, "props in recipeCard");
   return (
@@ -40,21 +40,23 @@ const RecipeCard = props => {
 
       <button>Edit Recipe</button>
       <button>Delete Recipe</button>
-      <button
-        key={props.recipe.id}
+      <Link to={`/recipedetails/${props.recipe.id}`}>
+        <button
+        // key={props.recipe.id}
         // color="danger"
         // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
-        onClick={handleClick}
-      >
-        View Instructions
-      </button>
+        // onClick={() => history.push(`/recipedetails/${props.recipe.id`)}
+        >
+          View Instructions
+        </button>
+      </Link>
     </div>
   );
 };
 
-// const mapStateToProps = state => {
+// const mapStateToProps = ({ recipeReducer }) => {
 //   return {
-//     recipes: state.recipe.recipes
+//     recipe: recipeReducer.recipe
 //   };
 // };
 

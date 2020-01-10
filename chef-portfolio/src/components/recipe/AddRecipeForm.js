@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { addRecipe } from "../../store/recipe/RecipeActions";
 
 // import {
@@ -11,7 +11,7 @@ import { addRecipe } from "../../store/recipe/RecipeActions";
 // } from "../styles/StyledComponents";
 
 const AddRecipeForm = props => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [recipe, setRecipe] = useState({
     name: "",
     // recipeImage: "",
@@ -34,7 +34,7 @@ const AddRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    dispatch(addRecipe());
+    props.addRecipe(recipe);
     console.log(recipe, "submitform recipe");
   };
 
@@ -122,6 +122,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(AddRecipeForm);
+export default connect(mapStateToProps, { addRecipe })(AddRecipeForm);
 
 // export default AddRecipeForm;

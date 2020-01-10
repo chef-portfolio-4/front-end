@@ -10,11 +10,12 @@ import { Card } from "reactstrap";
 import { getAllRecipes } from "../../store/recipe/RecipeActions";
 
 const RecipeList = props => {
-  const [recipes] = useState([]);
-  const dispatch = useDispatch();
+  // const [recipes] = useState([]);
+  // const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllRecipes());
-    // console.log("hello");
+    props.getAllRecipes();
+    console.log(props, "hello");
+    // console.log(recipeReducer, "reducer");
   }, []);
 
   // if (getAllRecipes) {
@@ -24,7 +25,7 @@ const RecipeList = props => {
     <Card className="recipe-card">
       <div className="card-info">
         <div>
-          {/* {console.log(recipes, "recipes")} */}
+          {console.log(props.recipes, "recipes")}
           {props.recipes.map(recipe => {
             return <RecipeCard key={recipe.id} recipe={recipe} />;
           })}
@@ -35,7 +36,7 @@ const RecipeList = props => {
 };
 
 const mapStateToProps = ({ recipeReducer }) => {
-  // console.log(recipeReducer, "recipeReducer, in recipesList");
+  console.log(recipeReducer, "recipeReducer, in recipesList");
   return {
     recipes: recipeReducer.recipes
   };

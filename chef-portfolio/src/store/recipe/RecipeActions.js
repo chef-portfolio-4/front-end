@@ -9,8 +9,8 @@ import {
   GET_SINGLE_RECIPE,
   GET_USER_RECIPES,
   SEARCH_RECIPES,
-  GET_ALL_SUCCESS,
-  LOGOUT
+  GET_ALL_SUCCESS
+  // LOGOUT
 } from "./RecipeTypes";
 import { bindActionCreators } from "redux";
 
@@ -21,7 +21,7 @@ export const addRecipe = newRecipe => dispatch => {
     .then(res => {
       console.log(res.data, "add recipe response");
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.res));
 };
 
 export const modifyRecipe = (recipes, id) => dispatch => {
@@ -57,14 +57,14 @@ export const getAllRecipes = () => dispatch => {
 };
 
 export const getSingleRecipe = id => dispatch => {
-  dispatch({ type: GET_SINGLE_RECIPE });
+  // dispatch({ type: GET_SINGLE_RECIPE });
   axiosWithAuth()
     .get(`/recipes/${id}`)
     .then(res => {
       console.log(res.data, "GET_SINGLE_RECIPE res.data");
       dispatch({
         type: GET_SINGLE_RECIPE,
-        recipe: res.data
+        payload: res.data
       });
     })
     .catch(error => {
@@ -84,6 +84,7 @@ export const getUserRecipes = id => dispatch => {
     });
 };
 
-export const logout = () => dispatch => {
-  dispatch({ type: LOGOUT });
-};
+// export const logout = () => dispatch => {
+//   dispatch({ type: START_LOGOUT });
+// };
+// /LOGOUT USERexport const logoutUser = () => dispatch => {  dispatch({ type: START_LOGOUT });      localStorage.removeItem("token");      dispatch({ type: LOGOUT_SUCCESS });      history.push('/')};

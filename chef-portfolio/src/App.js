@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
@@ -34,17 +35,18 @@ function App() {
         <NavLink className="nav-edit" to="/EditRecipeForm">
           Edit_Recipe
         </NavLink>
-        <NavLink className="nav-logout" to="/Logout">
+        <NavLink className="nav-logout" to="/Homepage">
           Logout
         </NavLink>
       </nav>
 
       <section>
+        {/* <Router> */}
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/recipeslist" component={RecipesList} />
-          <Route path="/recipedetails" component={RecipeDetails} />
+          <Route path="/recipedetails/:id" component={RecipeDetails} />
           <Route path="/editrecipeform" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
           <Route path="/logout" component={Logout} />
@@ -58,6 +60,7 @@ function App() {
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}
         </Switch>
+        {/* </Router> */}
       </section>
     </div>
   );

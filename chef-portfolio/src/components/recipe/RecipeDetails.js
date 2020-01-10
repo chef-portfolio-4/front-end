@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import RecipeCard from "./RecipeCard";
 import { getSingleRecipe } from "../../store/recipe/RecipeActions";
@@ -16,13 +16,9 @@ import {
 } from "reactstrap";
 
 const RecipeDetails = props => {
-  const dispatch = useDispatch();
-  const pathname = props.location.pathname.split("/");
-  const id = pathname[2];
-  console.log(id, "id");
-  dispatch(getSingleRecipe(id));
-  // const id = this.props.match.params.id;
-  // this.props.RecipeDetails(id);
+  const id = props.match.params.id;
+  // console.log(id, "id");
+  useEffect(() => props.getSingleRecipe(id), []);
   console.log(props, "props in recipeDetails");
 
   return (
@@ -36,12 +32,13 @@ const RecipeDetails = props => {
           <div className="row"></div>
           <div>
             <Card>
-              <RecipeCard />
+              {/* <RecipeCard /> */}
+              <h1>Title: {props.recipe.name}</h1>
               {/* <CardImg src={recipe.image} alt="recipe" />
                   <CardBody>
                   <CardHeader><h4>{recipe.chefName}</h4></CardHeader> */}
               <CardTitle>
-                <h5>Ingredients:</h5>
+                {/* <h5>Ingredients:{props.recipe.ingredients[0]}</h5> */}
               </CardTitle>
               {/* <CardSubtitle><h5>{recipe.ingredients && (recipe.ingredients).toString()}</h5></CardSubtitle> */}
               <CardText>{props.steps}</CardText>

@@ -10,7 +10,15 @@ const checkUser = () => {
 const recipeInitialState = {
   user: { chef_id: checkUser() },
   recipes: [],
-  recipe: {},
+  recipe: {
+    // name: "",
+    // description: "",
+    // meal_type: "",
+    // time: "",
+    // chef_id: localStorage.userId,
+    // steps: "",
+    // ingredients: ""
+  },
   isLoading: false,
   error: null,
   newRecipe: {
@@ -86,8 +94,8 @@ const recipeReducer = (state = recipeInitialState, action) => {
         recipes: [...state.recipes]
       };
 
-    case types.LOGOUT:
-      return (state = undefined);
+    // case types.START_LOGOUT:
+    //   return (state = undefined);
 
     default:
       // console.log(state, "state");
