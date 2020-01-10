@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem } from "reactstrap";
 import { Route, NavLink, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -19,34 +19,38 @@ function App() {
     <div className="App">
       <Nav>
         <NavItem>
-          <img src="cheflogo.png" alt="chef portfolio logo" className="cheflogo"></img>
+          <img
+            src="cheflogo.png"
+            alt="chef portfolio logo"
+            className="cheflogo"
+          ></img>
         </NavItem>
         <NavItem>
-          <NavLink className="nav home" to="/Homepage">🍽 Home</NavLink>
+          <NavLink className="nav home" to="/Homepage">
+            🍽 Home
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
+          <NavLink className="nav reg" to="/Register">
+            Register
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="nav reg" to="/Register">Register</NavLink>
+          <NavLink className="nav login" to="/Login">
+            Login
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="nav login" to="/Login">Login</NavLink>
+          <NavLink className="nav chef" to="/ChefDashboard">
+            Dashboard
+          </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className="nav chef" to="/ChefDashboard">Dashboard</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink className="nav edit" to="/EditRecipeForm">Edit Recipe</NavLink>
-        </NavItem>
-        </NavLink>
-          <NavLink className="nav-logout" to="/Homepage">
-            Logout
-        </NavLink>
           <a href="https://chef-portfolio-4.github.io/landing-page/">
-          Landing Page
-        </a>
-      </Nav>    
+            Landing Page
+          </a>
+        </NavItem>
+      </Nav>
 
       <section>
         {/* <Router> */}
@@ -58,12 +62,11 @@ function App() {
           <Route path="/editrecipeform/:id" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
 
-          {/* <Route
-            path="/chefdashboard"
-            render={props => <ChefDashboard {...props} />}
-          /> */}
+          <Route path="/chefdashboard" render={props => <ChefDashboard />} />
           <Route path="/" component={Homepage} />
-          <PrivateRoute exact path="/chefdashboard" component={ChefDashboard} />
+          <PrivateRoute path="/chefdashboard" component={ChefDashboard} />
+          <PrivateRoute path="/addrecipeform" component={AddRecipeForm} />
+          <PrivateRoute path="/editrecipeform/:id" component={EditRecipeForm} />
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}
         </Switch>
