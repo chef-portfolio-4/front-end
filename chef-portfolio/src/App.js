@@ -17,24 +17,28 @@ function App() {
     <div className="App">
       <Nav>
         <NavItem>
-        <NavLink className="nav home" to="/Homepage">🍽 Home</NavLink>
+          <img src="cheflogo.png" alt="chef portfolio logo" className="cheflogo"></img>
         </NavItem>
         <NavItem>
-        <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
+          <NavLink className="nav home" to="/Homepage">🍽 Home</NavLink>
         </NavItem>
         <NavItem>
-        <NavLink className="nav reg" to="/Register">Register</NavLink>
+          <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
         </NavItem>
         <NavItem>
-        <NavLink className="nav login" to="/Login">Login</NavLink>
+          <NavLink className="nav reg" to="/Register">Register</NavLink>
         </NavItem>
         <NavItem>
-        <NavLink className="nav chef" to="/ChefDashboard">Dashboard</NavLink>
+          <NavLink className="nav login" to="/Login">Login</NavLink>
         </NavItem>
         <NavItem>
-        <NavLink className="nav edit" to="/EditRecipeForm">Edit Recipe</NavLink>
+          <NavLink className="nav chef" to="/ChefDashboard">Dashboard</NavLink>
         </NavItem>
-        </Nav>
+        <NavItem>
+          <NavLink className="nav edit" to="/EditRecipeForm">Edit Recipe</NavLink>
+        </NavItem>
+
+      </Nav>
 
       <section>
         <Switch>
