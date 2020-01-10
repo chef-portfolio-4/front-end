@@ -27,32 +27,56 @@ const RecipeCard = props => {
   };
 
   console.log(props, "props in recipeCard");
-  return (
-    <div className="recipe-card">
-      <Card>
-      <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
-      <CardText className="cardtext">{props.recipe.meal_type}</CardText>
-      <CardText className="cardtext">{props.recipe.description}</CardText>
-      <div className="buttondiv">
-      <Link to {`/editrecipeform/${props.recipe.id}`}>
-       <Button size="lg" color="primary" className="buttons">Edit Recipe</Button></Link>
-       <Button size="lg" color="danger" className="buttons" onClick={() => remove(props.recipe.id)}>
-          Delete Recipe</Button>
-      <Link to={`/recipedetails/${props.recipe.id}`}>
-        <Button size="lg" color="info" className="buttons"
-        key={props.recipe.id}
-        // color="danger"
-        // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
-        onClick={handleClick}
-      >
-        View Instructions
-      </Button>
-      </Link>
+  if (localStorage.userId !== null) {
+    return (
+      <div className="recipe-card">
+        <Card>
+          <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
+          <CardText className="cardtext">{props.recipe.meal_type}</CardText>
+          <CardText className="cardtext">{props.recipe.description}</CardText>
+
+          <div className="buttondiv">
+            <Link to={`/editrecipeform/${props.recipe.id}`}>
+              <Button size="lg" color="primary" className="buttons">
+                Edit Recipe
+              </Button>
+            </Link>
+            <Button
+              size="lg"
+              color="danger"
+              className="buttons"
+              onClick={() => remove(props.recipe.id)}
+            >
+              Delete Recipe
+            </Button>
+            <Link to={`/recipedetails/${props.recipe.id}`}>
+              <Button
+                size="lg"
+                color="info"
+                className="buttons"
+                key={props.recipe.id}
+                // color="danger"
+                // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
+                // onClick={handleClick}
+              >
+                View Instructions
+              </Button>
+            </Link>
+          </div>
+        </Card>
       </div>
-      </Card>
-      
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="recipe-card">
+        <Card>
+          <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
+          <CardText className="cardtext">{props.recipe.meal_type}</CardText>
+          <CardText className="cardtext">{props.recipe.description}</CardText>
+        </Card>
+      </div>
+    );
+  }
 };
 
 // const mapStateToProps = ({ recipeReducer }) => {

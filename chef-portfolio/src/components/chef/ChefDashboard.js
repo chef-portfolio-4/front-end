@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "../recipe/RecipeCard";
 import { connect, useSelector } from "react-redux";
+import { getAllRecipes } from "../../store/recipe/RecipeActions";
 
 const ChefDashboard = props => {
   console.log(props, "props in chefDashboard");
@@ -26,12 +27,11 @@ const ChefDashboard = props => {
   );
 };
 
-const mapStateToProps = state => {
-  console.log(state, "state");
+const mapStateToProps = ({ recipeReducer }) => {
+  console.log(recipeReducer, "recipeReducer, in recipesList");
   return {
-    myRecipes: state.recipes
+    recipes: recipeReducer.recipes
   };
 };
 
-export default connect(mapStateToProps)(ChefDashboard);
-// © 2020 GitHub, Inc.
+export default connect(mapStateToProps, { getAllRecipes })(ChefDashboard);

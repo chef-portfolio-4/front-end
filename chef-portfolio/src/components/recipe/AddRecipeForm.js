@@ -72,7 +72,7 @@ const AddRecipeForm = props => {
         <Label>Please Select a Meal Type!</Label>
         <Input
           type="select"
-          name="recipeType"
+          name="meal_type"
           id="cuisine"
           onChange={handleChanges}
           value={recipe.meal_type}
@@ -105,7 +105,10 @@ const AddRecipeForm = props => {
           value={recipe.instructions}
         />*/}
         <div>
-          <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
+          <Button className="buttons" size="lg" color="primary" type="submit">
+            Submit Your Recipe!
+          </Button>
+        </div>
       </form>
 
       {/* <AddRecipeCard>
