@@ -12,7 +12,8 @@ import RecipesList from "./components/recipe/RecipesList";
 import RecipeDetails from "./components/recipe/RecipeDetails";
 import EditRecipeForm from "./components/recipe/EditRecipeForm";
 import AddRecipeForm from "./components/recipe/AddRecipeForm";
-import Logout from "./components/Logout";
+// import Logout from "./components/Logout";
+import SearchForm from "./components/recipe/SearchForm";
 
 function App() {
   return (
@@ -50,6 +51,9 @@ function App() {
             Landing Page
           </a>
         </NavItem>
+        <NavLink className="nav search" to="/searchform">
+            Search
+          </NavLink>
       </Nav>
 
       <section>
@@ -61,6 +65,7 @@ function App() {
           <Route path="/recipedetails/:id" component={RecipeDetails} />
           <Route path="/editrecipeform/:id" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
+          <Route path="/searchform" component={SearchForm} />
 
           <Route path="/chefdashboard" render={props => <ChefDashboard />} />
           <Route path="/" component={Homepage} />
