@@ -7,3 +7,4 @@ export const GET_USER_RECIPES = "GET_USER_RECIPES";
 export const SEARCH_RECIPES = "SEARCH_RECIPES";
 export const GET_ALL_SUCCESS = "GET_ALL_SUCCESS";
 export const GET_ALL_FAILURE = "GET_ALL_FAILURE";
+export const LOGOUT = "LOGOUT";

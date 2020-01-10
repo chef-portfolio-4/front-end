@@ -10,6 +10,15 @@ const checkUser = () => {
 const recipeInitialState = {
   user: { chef_id: checkUser() },
   recipes: [],
+  recipe: {
+    // name: "",
+    // description: "",
+    // meal_type: "",
+    // time: "",
+    // chef_id: localStorage.userId,
+    // steps: "",
+    // ingredients: ""
+  },
   isLoading: false,
   error: null,
   newRecipe: {
@@ -32,13 +41,13 @@ const recipeReducer = (state = recipeInitialState, action) => {
         recipes: [...state.recipes, state.newRecipe]
       };
 
-    case types.DELETE_RECIPE:
-      return {
-        ...state,
-        recipes: state.recipes.filter(recipe => {
-          return recipe.id !== action.payload;
-        })
-      };
+    // case types.DELETE_RECIPE:
+    //   return {
+    //     ...state,
+    //     recipes: state.recipes.filter(recipe => {
+    //       return recipe.id !== action.payload;
+    //     })
+    //   };
 
     case types.MODIFY_RECIPE:
       return {
@@ -70,7 +79,7 @@ const recipeReducer = (state = recipeInitialState, action) => {
     case types.GET_SINGLE_RECIPE:
       return {
         ...state,
-        recipes: [...state.recipes]
+        recipe: action.payload
       };
 
     case types.GET_USER_RECIPES:
@@ -84,6 +93,9 @@ const recipeReducer = (state = recipeInitialState, action) => {
         ...state,
         recipes: [...state.recipes]
       };
+
+    // case types.START_LOGOUT:
+    //   return (state = undefined);
 
     default:
       // console.log(state, "state");

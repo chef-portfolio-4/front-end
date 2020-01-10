@@ -1,6 +1,7 @@
 import React from "react";
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Homepage from "./components/Homepage";
 import Login from "./components/LoginForm";
@@ -10,6 +11,7 @@ import RecipesList from "./components/recipe/RecipesList";
 import RecipeDetails from "./components/recipe/RecipeDetails";
 import EditRecipeForm from "./components/recipe/EditRecipeForm";
 import AddRecipeForm from "./components/recipe/AddRecipeForm";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -33,15 +35,22 @@ function App() {
         <NavLink className="nav-edit" to="/EditRecipeForm">
           Edit_Recipe
         </NavLink>
+        <NavLink className="nav-logout" to="/Homepage" s>
+          Logout
+        </NavLink>
+        <a href="https://chef-portfolio-4.github.io/landing-page/">
+          Landing Page
+        </a>
       </nav>
 
       <section>
+        {/* <Router> */}
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/recipeslist" component={RecipesList} />
-          <Route path="/recipedetails" component={RecipeDetails} />
-          <Route path="/editrecipeform" component={EditRecipeForm} />
+          <Route path="/recipedetails/:id" component={RecipeDetails} />
+          <Route path="/editrecipeform/:id" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
 
           {/* <Route
@@ -53,6 +62,7 @@ function App() {
           {/* <Route exact path="/" render={() => <Redirect to="/HomePage" />} />
             <Route exact path = '/post-form' component={Content} /> */}
         </Switch>
+        {/* </Router> */}
       </section>
     </div>
   );

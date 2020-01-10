@@ -7,10 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 
 import store from "./store";
+import history from "./components/history";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   </Provider>,

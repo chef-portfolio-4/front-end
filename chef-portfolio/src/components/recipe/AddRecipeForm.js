@@ -11,15 +11,19 @@ import { addRecipe } from "../../store/recipe/RecipeActions";
 // } from "../styles/StyledComponents";
 
 const AddRecipeForm = props => {
+  // const dispatch = useDispatch();
   const [recipe, setRecipe] = useState({
-    recipeName: "",
+    name: "",
     // recipeImage: "",
-    recipeType: "",
-    ingredients: "",
-    instructions: ""
+    description: "",
+    meal_type: "",
+    time: "",
+    chef_id: localStorage.userId
+    // steps: "",
+    // ingredients: ""
   });
-  console.log(recipe, "addrecipeform");
-  console.log(props, "props on recipeForm");
+  // console.log(recipe, "addrecipeform");
+  // console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -30,30 +34,47 @@ const AddRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-
+    props.addRecipe(recipe);
     console.log(recipe, "submitform recipe");
   };
 
   return (
     <div>
-      <form onSubmit={addRecipe}>
+      <form onSubmit={submitForm}>
         <h1>Add your recipe info here!</h1>
 
         <input
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="recipeName"
+          name="name"
           onChange={handleChanges}
-          value={recipe.recipeName}
+          value={recipe.name}
+        />
+        <input
+          placeholder="Description"
+          id="description"
+          type="text"
+          name="description"
+          onChange={handleChanges}
+          value={recipe.description}
+        />
+
+        <input
+          placeholder="Total Time"
+          id="time"
+          type="text"
+          name="time"
+          onChange={handleChanges}
+          value={recipe.time}
         />
 
         <h3>Please Select a Meal Type!</h3>
         <select
-          name="recipeType"
-          id="cuisine"
+          name="meal_type"
+          id="meal_type"
           onChange={handleChanges}
-          value={recipe.recipeType}
+          value={recipe.meal_type}
         >
           <option value=""></option>
           <option value="breakfast">Breakfast</option>
@@ -63,7 +84,7 @@ const AddRecipeForm = props => {
           <option value="dessert">Dessert</option>
         </select>
 
-        <h3>Please Add Recipe Ingredients Here!</h3>
+        {/* <h3>Please Add Recipe Ingredients Here!</h3>
         <input
           placeholder="Ingredients"
           id="ingredients"
@@ -76,12 +97,12 @@ const AddRecipeForm = props => {
         <h3>Please Add Recipe Instructions Here!</h3>
         <input
           placeholder="Instructions"
-          id="instructions"
+          id="steps"
           type="text"
-          name="instructions"
+          name="steps"
           onChange={handleChanges}
-          value={recipe.instructions}
-        />
+          value={recipe.steps}
+        /> */}
 
         <button type="submit">Submit Your Recipe!</button>
       </form>
@@ -95,12 +116,12 @@ const AddRecipeForm = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state, "state, in recipesList");
+  // console.log(state, "state, in recipesList");
   return {
     recipes: state.recipes
   };
 };
 
-export default connect(mapStateToProps)(AddRecipeForm);
+export default connect(mapStateToProps, { addRecipe })(AddRecipeForm);
 
 // export default AddRecipeForm;
