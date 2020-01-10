@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -38,6 +38,9 @@ function App() {
         <NavLink className="nav-logout" to="/Homepage" s>
           Logout
         </NavLink>
+        <a href="https://chef-portfolio-4.github.io/landing-page/">
+          Landing Page
+        </a>
       </nav>
 
       <section>
