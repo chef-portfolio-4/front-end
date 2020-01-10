@@ -51,9 +51,11 @@ function App() {
             Landing Page
           </a>
         </NavItem>
-        <NavLink className="nav search" to="/searchform">
+        <NavItem>
+          <NavLink className="nav search" to="/searchform">
             Search
           </NavLink>
+        </NavItem>
       </Nav>
 
       <section>
