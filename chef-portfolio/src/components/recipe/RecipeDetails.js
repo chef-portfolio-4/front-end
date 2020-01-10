@@ -9,10 +9,10 @@ import {
   // CardImg,
   CardText,
   // CardBody,
-  CardTitle
+  CardTitle,
   // CardSubtitle,
   // CardFooter,
-  // CardHeader
+CardHeader
 } from "reactstrap";
 
 const RecipeDetails = props => {
@@ -33,12 +33,12 @@ const RecipeDetails = props => {
           <div>
             <Card>
               {/* <RecipeCard /> */}
-              <h1>Title: {props.recipe.name}</h1>
-              <h3>Description: {props.recipe.description}</h3>
-              <h3>Meal Type:{props.recipe.meal_type} </h3>
-              <h3>Time: {props.recipe.time}</h3>
-              <h2>Ingredients: coming soon</h2>
-              <h2>Steps: coming after that</h2>
+              <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
+              <CardText className="cardtext">Description: {props.recipe.description}</CardText>
+              <CardText className="cardtext">Meal Type: {props.recipe.meal_type}</CardText>
+              <CardText className="cardtext">Time: {props.recipe.time}</CardText>
+              <CardText className="cardtext">Ingredients: coming soon</CardText>
+              <CardText className="cardtext">Steps: coming after that</CardText>
               {/* <CardImg src={recipe.image} alt="recipe" />
                   <CardBody>
                   <CardHeader><h4>{recipe.chefName}</h4></CardHeader> */}
