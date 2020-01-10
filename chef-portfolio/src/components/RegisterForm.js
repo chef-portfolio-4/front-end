@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/AxiosWithAuth";
 import { Button, FormGroup, Label, Input, FormText } from "reactstrap";
 import { login } from "../store/authentication/AuthenticationActions";
@@ -19,17 +19,19 @@ const Register = () => {
     return userCreds.password.length > 6;
   }
 
+  let history = useHistory();
+
   let onChange = e => {
     setUserCreds({ ...userCreds, [e.target.name]: e.target.value });
   };
-  const handleSubmit = props => {
+  const handleSubmit = () => {
     axiosWithAuth()
       .post("/auth/register", userCreds)
       .then(response => {
         localStorage.setItem("token", response.data.token);
         console.log(response.data, "response.data");
         // props.login(response.data);
-        props.history.push("/chefdashboard");
+        history.push("/chefdashboard");
       })
       .catch(err => console.log(err));
   };

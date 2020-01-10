@@ -1,27 +1,26 @@
 import * as types from "./RecipeTypes";
-
+const checkUser = () => {
+  let userId = localStorage.getItem("userId");
+  if (userId !== "") {
+    return userId;
+  } else {
+    return (userId = "");
+  }
+};
 const recipeInitialState = {
-  user: {chef_id: ""},
-  recipes: [
-    {
-      recipeName: "Pork & Beans",
-      id: 1,
-      // recipeImage: "",
-      recipeType: "lunch",
-      ingredients: "",
-      instructions: "",
-      chef_id: 1
-    },
-    {
-      recipeName: "Rosemary Brown Sugar Bacon",
-      id: 2,
-      // recipeImage: "",
-      recipeType: "breakfast",
-      ingredients: "",
-      instructions: "",
-      chef_id:2
-    }
-  ],
+  user: { chef_id: checkUser() },
+  recipes: [],
+  recipe: {
+    // name: "",
+    // description: "",
+    // meal_type: "",
+    // time: "",
+    // chef_id: localStorage.userId,
+    // steps: "",
+    // ingredients: ""
+  },
+  isLoading: false,
+  error: null,
   newRecipe: {
     recipeName: "",
     id: "",
@@ -33,7 +32,7 @@ const recipeInitialState = {
   isEditing: false
 };
 
-export const recipeReducer = (state = recipeInitialState, action) => {
+const recipeReducer = (state = recipeInitialState, action) => {
   switch (action.type) {
     case types.ADD_RECIPE:
       return {
@@ -42,13 +41,13 @@ export const recipeReducer = (state = recipeInitialState, action) => {
         recipes: [...state.recipes, state.newRecipe]
       };
 
-    case types.DELETE_RECIPE:
-      return {
-        ...state,
-        recipes: state.recipes.filter(recipe => {
-          return recipe.id !== action.payload;
-        })
-      };
+    // case types.DELETE_RECIPE:
+    //   return {
+    //     ...state,
+    //     recipes: state.recipes.filter(recipe => {
+    //       return recipe.id !== action.payload;
+    //     })
+    //   };
 
     case types.MODIFY_RECIPE:
       return {
@@ -60,13 +59,27 @@ export const recipeReducer = (state = recipeInitialState, action) => {
     case types.GET_ALL_RECIPES:
       return {
         ...state,
-        recipes: [...state.recipes]
+        isLoading: true
+      };
+
+    case types.GET_ALL_SUCCESS:
+      return {
+        ...state,
+        recipes: action.payload,
+        isLoading: false
+      };
+
+    case types.GET_ALL_FAILURE:
+      return {
+        ...state,
+        recipes: action.payload,
+        isLoading: false
       };
 
     case types.GET_SINGLE_RECIPE:
       return {
         ...state,
-        recipes: [...state.recipes]
+        recipe: action.payload
       };
 
     case types.GET_USER_RECIPES:
@@ -81,8 +94,13 @@ export const recipeReducer = (state = recipeInitialState, action) => {
         recipes: [...state.recipes]
       };
 
+    // case types.START_LOGOUT:
+    //   return (state = undefined);
+
     default:
       // console.log(state, "state");
       return state;
   }
 };
+
+export default recipeReducer;

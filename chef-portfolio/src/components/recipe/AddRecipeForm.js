@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { addRecipe } from "../../store/recipe/RecipeActions";
 import { Button, Label, Input } from "reactstrap";
 
@@ -11,14 +12,19 @@ import { Button, Label, Input } from "reactstrap";
 // } from "../styles/StyledComponents";
 
 const AddRecipeForm = props => {
+  // const dispatch = useDispatch();
   const [recipe, setRecipe] = useState({
-    recipeName: "",
+    name: "",
     // recipeImage: "",
-    recipeType: "",
-    ingredients: "",
-    instructions: ""
+    description: "",
+    meal_type: "",
+    time: "",
+    chef_id: localStorage.userId
+    // steps: "",
+    // ingredients: ""
   });
-  console.log(recipe, "addrecipeform");
+  // console.log(recipe, "addrecipeform");
+  // console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -29,6 +35,7 @@ const AddRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
+    props.addRecipe(recipe);
     console.log(recipe, "submitform recipe");
   };
 
@@ -36,14 +43,30 @@ const AddRecipeForm = props => {
     <div>
       <form className="forms" onSubmit={(addRecipe, submitForm)}>
         <Label>Add your recipe info here!</Label>
-
         <Input
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="recipeName"
+          name="name"
           onChange={handleChanges}
-          value={recipe.recipeName}
+          value={recipe.name}
+        />
+        <input
+          placeholder="Description"
+          id="description"
+          type="text"
+          name="description"
+          onChange={handleChanges}
+          value={recipe.description}
+        />
+
+        <input
+          placeholder="Total Time"
+          id="time"
+          type="text"
+          name="time"
+          onChange={handleChanges}
+          value={recipe.time}
         />
 
         <Label>Please Select a Meal Type!</Label>
@@ -52,7 +75,7 @@ const AddRecipeForm = props => {
           name="recipeType"
           id="cuisine"
           onChange={handleChanges}
-          value={recipe.recipeType}
+          value={recipe.meal_type}
         >
           <option value=""></option>
           <option value="breakfast">Breakfast</option>
@@ -62,7 +85,7 @@ const AddRecipeForm = props => {
           <option value="dessert">Dessert</option>
         </Input>
 
-        <Label>Please Add Recipe Ingredients Here!</Label>
+        {/*<Label>Please Add Recipe Ingredients Here!</Label>
         <Input
           placeholder="Ingredients"
           id="ingredients"
@@ -75,12 +98,12 @@ const AddRecipeForm = props => {
         <Label>Please Add Recipe Instructions Here!</Label>
         <Input
           placeholder="Instructions"
-          id="instructions"
+          id="steps"
           type="text"
-          name="instructions"
+          name="steps"
           onChange={handleChanges}
           value={recipe.instructions}
-        />
+        />*/}
         <div>
           <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
       </form>
@@ -93,4 +116,13 @@ const AddRecipeForm = props => {
   );
 };
 
-export default AddRecipeForm;
+const mapStateToProps = state => {
+  // console.log(state, "state, in recipesList");
+  return {
+    recipes: state.recipes
+  };
+};
+
+export default connect(mapStateToProps, { addRecipe })(AddRecipeForm);
+
+// export default AddRecipeForm;

@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Button, Label, Input } from "reactstrap";
+import {
+  getSingleRecipe,
+  modifyRecipe
+} from "../../store/recipe/RecipeActions";
 
 // import {
 //   FormDiv,
@@ -10,13 +15,23 @@ import { Button, Label, Input } from "reactstrap";
 // } from "../styles/StyledComponents";
 
 const EditRecipeForm = props => {
+  const id = props.match.params.id;
+  // console.log(id, "id");
+  useEffect(() => {
+    props.getSingleRecipe(id);
+    setRecipe(props.currentRecipe);
+  }, []);
+  console.log(props, "props in recipeForm");
   const [recipe, setRecipe] = useState({
-    recipeName: "",
-    // recipeImage: "",
-    recipeType: "",
-    ingredients: "",
-    instructions: ""
+    id: id,
+    name: "",
+    description: "",
+    meal_type: "",
+    time: "",
+    chef_id: localStorage.userId
   });
+  // console.log(recipe, "addrecipeform");
+  console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -27,7 +42,16 @@ const EditRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(recipe);
+    props.modifyRecipe(id, {
+      id: id,
+      name: recipe.name,
+      description: recipe.description,
+      meal_type: recipe.meal_type,
+      time: recipe.time,
+      chef_id: localStorage.userId
+    });
+    props.history.push("/homepage");
+    console.log(recipe, "submitform recipe");
   };
 
   return (
@@ -39,19 +63,36 @@ const EditRecipeForm = props => {
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="recipeName"
+          name="name"
           onChange={handleChanges}
-          value={recipe.recipeName}
+          value={recipe.name}
+        />
+        <input
+          placeholder="Description"
+          id="description"
+          type="text"
+          name="description"
+          onChange={handleChanges}
+          value={recipe.description}
+        />
+
+        <input
+          placeholder="Total Time"
+          id="time"
+          type="text"
+          name="time"
+          onChange={handleChanges}
+          value={recipe.time}
         />
 
         <Label>Please Select a Meal Type!</Label>
         <Input
           type="select"
-          name="recipeType"
-          id="cuisine"
+          name="meal_type"
+          id="meal_type"
           onChange={handleChanges}
-          value={recipe.recipeType}
-        >
+          value={recipe.meal_type}
+          >
           <option value=""></option>
           <option value="breakfast">Breakfast</option>
           <option value="lunch">Lunch</option>
@@ -60,30 +101,35 @@ const EditRecipeForm = props => {
           <option value="dessert">Dessert</option>
           </Input>
 
-        <Label>Please Add Recipe Ingredients Here!</Label>
+        {/*<Label>Please Add Recipe Ingredients Here!</Label>
         <Input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
           name="ingredients"
           onChange={handleChanges}
-          value={recipe.ingredients}
+          value=""
         />
 
         <Label>Please Add Recipe Instructions Here!</Label>
         <Input
           placeholder="Instructions"
-          id="instructions"
+          id="steps"
           type="text"
-          name="instructions"
+          name="steps"
           onChange={handleChanges}
           value={recipe.instructions}
-        />
-  <div>
+        />*/}
+    <div>
         <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
       </form>
     </div>
   );
 };
-
-export default EditRecipeForm;
+const mapStateToProps = ({ recipeReducer }) => ({
+  currentRecipe: recipeReducer.recipe
+});
+export default connect(mapStateToProps, { getSingleRecipe, modifyRecipe })(
+  EditRecipeForm
+);
+// export default EditRecipeForm;

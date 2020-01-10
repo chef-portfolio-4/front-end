@@ -4,12 +4,12 @@ import thunk from "redux-thunk";
 
 // Reducers
 import { authenticationReducer } from "./authentication/AuthenticationReducers";
-import { recipeReducer } from "./recipe/RecipeReducer";
+import recipeReducer from "./recipe/RecipeReducer";
 
 //
 const combinedReducers = combineReducers({
   auth: authenticationReducer,
-  recipe: recipeReducer
+  recipeReducer
 });
 
 const store = createStore(
