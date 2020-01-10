@@ -10,12 +10,17 @@ import React, { useState } from "react";
 
 const EditRecipeForm = props => {
   const [recipe, setRecipe] = useState({
-    recipeName: "",
+    name: "",
     // recipeImage: "",
-    recipeType: "",
-    ingredients: "",
-    instructions: ""
+    description: "",
+    meal_type: "",
+    time: "",
+    chef_id: localStorage.userId,
+    steps: "",
+    ingredients: ""
   });
+  // console.log(recipe, "addrecipeform");
+  // console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -26,7 +31,7 @@ const EditRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
-    console.log(recipe);
+    console.log(recipe, "submitform recipe");
   };
 
   return (
@@ -38,17 +43,34 @@ const EditRecipeForm = props => {
           placeholder="Recipe Name"
           id="name"
           type="text"
-          name="recipeName"
+          name="name"
           onChange={handleChanges}
-          value={recipe.recipeName}
+          value={recipe.name}
+        />
+        <input
+          placeholder="Description"
+          id="description"
+          type="text"
+          name="description"
+          onChange={handleChanges}
+          value={recipe.description}
+        />
+
+        <input
+          placeholder="Total Time"
+          id="time"
+          type="text"
+          name="time"
+          onChange={handleChanges}
+          value={recipe.time}
         />
 
         <h3>Please Select a Meal Type!</h3>
         <select
-          name="recipeType"
-          id="cuisine"
+          name="meal_type"
+          id="meal_type"
           onChange={handleChanges}
-          value={recipe.recipeType}
+          value={recipe.meal_type}
         >
           <option value=""></option>
           <option value="breakfast">Breakfast</option>
@@ -71,11 +93,11 @@ const EditRecipeForm = props => {
         <h3>Please Add Recipe Instructions Here!</h3>
         <input
           placeholder="Instructions"
-          id="instructions"
+          id="steps"
           type="text"
-          name="instructions"
+          name="steps"
           onChange={handleChanges}
-          value={recipe.instructions}
+          value={recipe.steps}
         />
 
         <button type="submit">Submit Your Recipe!</button>

@@ -10,6 +10,7 @@ const checkUser = () => {
 const recipeInitialState = {
   user: { chef_id: checkUser() },
   recipes: [],
+  recipe: {},
   isLoading: false,
   error: null,
   newRecipe: {
@@ -70,7 +71,7 @@ const recipeReducer = (state = recipeInitialState, action) => {
     case types.GET_SINGLE_RECIPE:
       return {
         ...state,
-        recipes: [...state.recipes]
+        recipe: action.payload
       };
 
     case types.GET_USER_RECIPES:
@@ -84,6 +85,9 @@ const recipeReducer = (state = recipeInitialState, action) => {
         ...state,
         recipes: [...state.recipes]
       };
+
+    case types.LOGOUT:
+      return (state = undefined);
 
     default:
       // console.log(state, "state");

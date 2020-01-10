@@ -9,15 +9,17 @@ import {
   GET_SINGLE_RECIPE,
   GET_USER_RECIPES,
   SEARCH_RECIPES,
-  GET_ALL_SUCCESS
+  GET_ALL_SUCCESS,
+  LOGOUT
 } from "./RecipeTypes";
+import { bindActionCreators } from "redux";
 
 export const addRecipe = newRecipe => dispatch => {
   dispatch({ type: ADD_RECIPE });
   axiosWithAuth()
     .post("/recipes/addRecipe", newRecipe)
     .then(res => {
-      console.log(res.data);
+      console.log(res.data, "add recipe response");
     })
     .catch(err => console.log(err));
 };
@@ -42,7 +44,7 @@ export const deleteRecipe = (recipes, id) => dispatch => {
 
 export const getAllRecipes = () => dispatch => {
   dispatch({ type: GET_ALL_RECIPES });
-  console.log("hello again");
+  // console.log("hello again");
   axios
     .get("https://chefportfolio2020.herokuapp.com/api/recipes")
     .then(res => {
@@ -59,6 +61,7 @@ export const getSingleRecipe = id => dispatch => {
   axiosWithAuth()
     .get(`/recipes/${id}`)
     .then(res => {
+      console.log(res.data, "GET_SINGLE_RECIPE res.data");
       dispatch({
         type: GET_SINGLE_RECIPE,
         recipe: res.data
@@ -79,4 +82,8 @@ export const getUserRecipes = id => dispatch => {
     .catch(error => {
       throw error;
     });
+};
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };

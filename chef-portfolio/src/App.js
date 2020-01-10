@@ -10,6 +10,7 @@ import RecipesList from "./components/recipe/RecipesList";
 import RecipeDetails from "./components/recipe/RecipeDetails";
 import EditRecipeForm from "./components/recipe/EditRecipeForm";
 import AddRecipeForm from "./components/recipe/AddRecipeForm";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <NavLink className="nav-edit" to="/EditRecipeForm">
           Edit_Recipe
         </NavLink>
+        <NavLink className="nav-logout" to="/Logout">
+          Logout
+        </NavLink>
       </nav>
 
       <section>
@@ -43,6 +47,7 @@ function App() {
           <Route path="/recipedetails" component={RecipeDetails} />
           <Route path="/editrecipeform" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
+          <Route path="/logout" component={Logout} />
 
           {/* <Route
             path="/chefdashboard"

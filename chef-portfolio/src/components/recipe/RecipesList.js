@@ -14,7 +14,7 @@ const RecipeList = props => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllRecipes());
-    console.log("hello");
+    // console.log("hello");
   }, []);
 
   // if (getAllRecipes) {
@@ -24,8 +24,7 @@ const RecipeList = props => {
     <Card className="recipe-card">
       <div className="card-info">
         <div>
-          {/* {dispatch(getAllSuccess())} */}
-          {console.log(recipes, "recipes")}
+          {/* {console.log(recipes, "recipes")} */}
           {props.recipes.map(recipe => {
             return <RecipeCard key={recipe.id} recipe={recipe} />;
           })}
@@ -36,7 +35,7 @@ const RecipeList = props => {
 };
 
 const mapStateToProps = ({ recipeReducer }) => {
-  console.log(recipeReducer, "recipeReducer, in recipesList");
+  // console.log(recipeReducer, "recipeReducer, in recipesList");
   return {
     recipes: recipeReducer.recipes
   };
