@@ -35,7 +35,7 @@ function App() {
         <NavLink className="nav-edit" to="/EditRecipeForm">
           Edit_Recipe
         </NavLink>
-        <NavLink className="nav-logout" to="/Homepage">
+        <NavLink className="nav-logout" to="/Homepage" s>
           Logout
         </NavLink>
       </nav>
@@ -47,9 +47,8 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/recipeslist" component={RecipesList} />
           <Route path="/recipedetails/:id" component={RecipeDetails} />
-          <Route path="/editrecipeform" component={EditRecipeForm} />
+          <Route path="/editrecipeform/:id" component={EditRecipeForm} />
           <Route path="/addrecipeform" component={AddRecipeForm} />
-          <Route path="/logout" component={Logout} />
 
           {/* <Route
             path="/chefdashboard"

@@ -34,6 +34,11 @@ const RecipeDetails = props => {
             <Card>
               {/* <RecipeCard /> */}
               <h1>Title: {props.recipe.name}</h1>
+              <h3>Description: {props.recipe.description}</h3>
+              <h3>Meal Type:{props.recipe.meal_type} </h3>
+              <h3>Time: {props.recipe.time}</h3>
+              <h2>Ingredients: coming soon</h2>
+              <h2>Steps: coming after that</h2>
               {/* <CardImg src={recipe.image} alt="recipe" />
                   <CardBody>
                   <CardHeader><h4>{recipe.chefName}</h4></CardHeader> */}

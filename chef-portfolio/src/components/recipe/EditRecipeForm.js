@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {
+  getSingleRecipe,
+  modifyRecipe
+} from "../../store/recipe/RecipeActions";
 
 // import {
 //   FormDiv,
@@ -9,18 +14,23 @@ import React, { useState } from "react";
 // } from "../styles/StyledComponents";
 
 const EditRecipeForm = props => {
+  const id = props.match.params.id;
+  // console.log(id, "id");
+  useEffect(() => {
+    props.getSingleRecipe(id);
+    setRecipe(props.currentRecipe);
+  }, []);
+  console.log(props, "props in recipeForm");
   const [recipe, setRecipe] = useState({
+    id: id,
     name: "",
-    // recipeImage: "",
     description: "",
     meal_type: "",
     time: "",
-    chef_id: localStorage.userId,
-    steps: "",
-    ingredients: ""
+    chef_id: localStorage.userId
   });
   // console.log(recipe, "addrecipeform");
-  // console.log(props, "props on recipeForm");
+  console.log(props, "props on recipeForm");
 
   const handleChanges = e => {
     setRecipe({
@@ -31,6 +41,15 @@ const EditRecipeForm = props => {
 
   const submitForm = e => {
     e.preventDefault();
+    props.modifyRecipe(id, {
+      id: id,
+      name: recipe.name,
+      description: recipe.description,
+      meal_type: recipe.meal_type,
+      time: recipe.time,
+      chef_id: localStorage.userId
+    });
+    props.history.push("/homepage");
     console.log(recipe, "submitform recipe");
   };
 
@@ -80,14 +99,14 @@ const EditRecipeForm = props => {
           <option value="dessert">Dessert</option>
         </select>
 
-        <h3>Please Add Recipe Ingredients Here!</h3>
+        {/* <h3>Please Add Recipe Ingredients Here!</h3>
         <input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
           name="ingredients"
           onChange={handleChanges}
-          value={recipe.ingredients}
+          value=""
         />
 
         <h3>Please Add Recipe Instructions Here!</h3>
@@ -97,13 +116,18 @@ const EditRecipeForm = props => {
           type="text"
           name="steps"
           onChange={handleChanges}
-          value={recipe.steps}
-        />
+          value=""
+        /> */}
 
         <button type="submit">Submit Your Recipe!</button>
       </form>
     </div>
   );
 };
-
-export default EditRecipeForm;
+const mapStateToProps = ({ recipeReducer }) => ({
+  currentRecipe: recipeReducer.recipe
+});
+export default connect(mapStateToProps, { getSingleRecipe, modifyRecipe })(
+  EditRecipeForm
+);
+// export default EditRecipeForm;

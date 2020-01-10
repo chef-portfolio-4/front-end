@@ -17,28 +17,38 @@ import { bindActionCreators } from "redux";
 export const addRecipe = newRecipe => dispatch => {
   dispatch({ type: ADD_RECIPE });
   axiosWithAuth()
-    .post("/recipes/addRecipe", newRecipe)
+    .post("/recipes/", newRecipe)
     .then(res => {
       console.log(res.data, "add recipe response");
     })
     .catch(err => console.log(err.res));
 };
 
-export const modifyRecipe = (recipes, id) => dispatch => {
+export const modifyRecipe = (id, input) => dispatch => {
   dispatch({ type: MODIFY_RECIPE });
   axiosWithAuth()
-    .put(`/recipes/${id}`)
+    .put(`/recipes/${id}`, input)
     .then(res => {
-      console.log(res.data);
+      axios
+        .get("https://chefportfolio2020.herokuapp.com/api/recipes")
+        .then(res => {
+          dispatch({ type: GET_ALL_SUCCESS, payload: res.data });
+          console.log(res.data, "GET_ALL_RECIPES_SUCCESS res.data");
+        });
     });
 };
 
-export const deleteRecipe = (recipes, id) => dispatch => {
+export const deleteRecipe = id => dispatch => {
   dispatch({ type: DELETE_RECIPE });
   axiosWithAuth()
     .delete(`/recipes/${id}`)
     .then(res => {
-      console.log(res.data);
+      axios
+        .get("https://chefportfolio2020.herokuapp.com/api/recipes")
+        .then(res => {
+          dispatch({ type: GET_ALL_SUCCESS, payload: res.data });
+          console.log(res.data, "GET_ALL_RECIPES_SUCCESS res.data");
+        });
     });
 };
 
@@ -71,6 +81,22 @@ export const getSingleRecipe = id => dispatch => {
       throw error;
     });
 };
+
+// export const getRecipeToEdit = (id, history) => dispatch => {
+//   axiosWithAuth()
+//     .get(`/recipes/${id}`)
+//     .then(res => {
+//       console.log(res.data, "GET_RECIPE_TO_EDIT res.data");
+//       dispatch({
+//         type: GET_SINGLE_RECIPE,
+//         payload: res.data
+//       });
+//       history.push(`/editrecipeform/${id}`);
+//     })
+//     .catch(error => {
+//       throw error;
+//     });
+// };
 
 export const getUserRecipes = id => dispatch => {
   dispatch({ type: GET_USER_RECIPES });

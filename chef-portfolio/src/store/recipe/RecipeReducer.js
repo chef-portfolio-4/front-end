@@ -41,13 +41,13 @@ const recipeReducer = (state = recipeInitialState, action) => {
         recipes: [...state.recipes, state.newRecipe]
       };
 
-    case types.DELETE_RECIPE:
-      return {
-        ...state,
-        recipes: state.recipes.filter(recipe => {
-          return recipe.id !== action.payload;
-        })
-      };
+    // case types.DELETE_RECIPE:
+    //   return {
+    //     ...state,
+    //     recipes: state.recipes.filter(recipe => {
+    //       return recipe.id !== action.payload;
+    //     })
+    //   };
 
     case types.MODIFY_RECIPE:
       return {

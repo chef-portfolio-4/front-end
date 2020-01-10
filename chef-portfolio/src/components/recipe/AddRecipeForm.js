@@ -18,9 +18,9 @@ const AddRecipeForm = props => {
     description: "",
     meal_type: "",
     time: "",
-    chef_id: localStorage.userId,
-    steps: "",
-    ingredients: ""
+    chef_id: localStorage.userId
+    // steps: "",
+    // ingredients: ""
   });
   // console.log(recipe, "addrecipeform");
   // console.log(props, "props on recipeForm");
@@ -84,7 +84,7 @@ const AddRecipeForm = props => {
           <option value="dessert">Dessert</option>
         </select>
 
-        <h3>Please Add Recipe Ingredients Here!</h3>
+        {/* <h3>Please Add Recipe Ingredients Here!</h3>
         <input
           placeholder="Ingredients"
           id="ingredients"
@@ -102,7 +102,7 @@ const AddRecipeForm = props => {
           name="steps"
           onChange={handleChanges}
           value={recipe.steps}
-        />
+        /> */}
 
         <button type="submit">Submit Your Recipe!</button>
       </form>

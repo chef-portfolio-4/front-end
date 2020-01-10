@@ -1,35 +1,30 @@
-import React from "react";
-import { useHistory, Link } from "react-router-dom";
-// import axios from "axios";
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { deleteRecipe } from "../../store/recipe/RecipeActions";
+import {
+  getSingleRecipe,
+  deleteRecipe
+} from "../../store/recipe/RecipeActions";
 import EditRecipeForm from "./EditRecipeForm";
+// import history from "../history";
 
 // import { Card, Button, CardHeader } from "reactstrap";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
 
-// const goToEditForm = props => {
-//   props.history.push({
-//     pathname: "/editrecipeform",
-//     state: {
-//       name: props.recipeName
-//     }
-//   });
-// };
-
-// const remove = props => {
-//   props.deleteRecipe(recipe.id);
-//   props.history.push("/chefdashboard");
-// };
-
 const RecipeCard = props => {
-  let history = useHistory();
-  // function handleClick() {
-  //   ;
-  // }
+  // const goToEditForm = () => {
+  //   const id = props.match.params.id;
+  //   console.log(id, "id");
+  //   props.getSingleRecipe(id);
+  //   console.log(props, "props in recipeDetails");
+  // };
+
+  const remove = id => {
+    props.deleteRecipe(id);
+    // props.history.push("/chefdashboard");
+  };
 
   console.log(props, "props in recipeCard");
   return (
@@ -37,12 +32,12 @@ const RecipeCard = props => {
       <h3>{props.recipe.name}</h3>
       <div>{props.recipe.meal_type}</div>
       <div>{props.recipe.description}</div>
-
-      <button>Edit Recipe</button>
-      <button>Delete Recipe</button>
+      <Link to={`/editrecipeform/${props.recipe.id}`}>
+        <button>Edit Recipe</button>
+      </Link>
+      <button onClick={() => remove(props.recipe.id)}>Delete Recipe</button>
       <Link to={`/recipedetails/${props.recipe.id}`}>
         <button
-        // key={props.recipe.id}
         // color="danger"
         // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
         // onClick={() => history.push(`/recipedetails/${props.recipe.id`)}
@@ -60,4 +55,6 @@ const RecipeCard = props => {
 //   };
 // };
 
-export default connect(null, { deleteRecipe, EditRecipeForm })(RecipeCard);
+export default connect(null, { getSingleRecipe, deleteRecipe, EditRecipeForm })(
+  RecipeCard
+);

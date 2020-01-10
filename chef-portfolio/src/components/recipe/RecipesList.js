@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 // import { deleteRecipe } from "../../store/operator/OperatorActions";
@@ -10,11 +11,12 @@ import { Card } from "reactstrap";
 import { getAllRecipes } from "../../store/recipe/RecipeActions";
 
 const RecipeList = props => {
+  const history = useHistory();
   // const [recipes] = useState([]);
   // const dispatch = useDispatch();
   useEffect(() => {
     props.getAllRecipes();
-    console.log(props, "hello");
+    console.log(props, history, "hello");
     // console.log(recipeReducer, "reducer");
   }, []);
 
@@ -27,7 +29,9 @@ const RecipeList = props => {
         <div>
           {console.log(props.recipes, "recipes")}
           {props.recipes.map(recipe => {
-            return <RecipeCard key={recipe.id} recipe={recipe} />;
+            return (
+              <RecipeCard key={recipe.id} recipe={recipe} history={history} />
+            );
           })}
         </div>
       </div>
