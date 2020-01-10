@@ -16,7 +16,7 @@ const Register = () => {
   console.log(userCreds, "userCreds");
 
   function validateForm() {
-    return userCreds.password.length > 0 && userCreds.password.length > 6;
+    return userCreds.password.length > 6;
   }
 
   let history = useHistory();
@@ -45,8 +45,9 @@ const Register = () => {
         }}
       >
         <FormGroup>
-          <Label>UserName</Label>
+          <Label>Username</Label>
           <Input
+            autoFocus
             name="username"
             type="text"
             value={userCreds.username}
@@ -71,7 +72,6 @@ const Register = () => {
         <FormGroup>
           <Label>Name</Label>
           <Input
-            autoFocus
             name="name"
             type="text"
             value={userCreds.name}
@@ -83,7 +83,6 @@ const Register = () => {
         <FormGroup>
           <Label>Email</Label>
           <Input
-            autoFocus
             name="email"
             type="email"
             value={userCreds.email}

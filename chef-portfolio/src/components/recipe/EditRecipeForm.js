@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { Button, Label, Input } from "reactstrap";
 import {
   getSingleRecipe,
   modifyRecipe
@@ -54,11 +55,11 @@ const EditRecipeForm = props => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitForm}>
-        <h1>Add your recipe info here!</h1>
+    <div className="formdiv">
+      <form className="forms" onSubmit={submitForm}>
+        <Label>Add your recipe info here!</Label>
 
-        <input
+        <Input
           placeholder="Recipe Name"
           id="name"
           type="text"
@@ -84,23 +85,24 @@ const EditRecipeForm = props => {
           value={recipe.time}
         />
 
-        <h3>Please Select a Meal Type!</h3>
-        <select
+        <Label>Please Select a Meal Type!</Label>
+        <Input
+          type="select"
           name="meal_type"
           id="meal_type"
           onChange={handleChanges}
           value={recipe.meal_type}
-        >
+          >
           <option value=""></option>
           <option value="breakfast">Breakfast</option>
           <option value="lunch">Lunch</option>
           <option value="appetizer">Appetizer</option>
           <option value="dinner">Dinner</option>
           <option value="dessert">Dessert</option>
-        </select>
+          </Input>
 
-        {/* <h3>Please Add Recipe Ingredients Here!</h3>
-        <input
+        {/*<Label>Please Add Recipe Ingredients Here!</Label>
+        <Input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
@@ -109,17 +111,17 @@ const EditRecipeForm = props => {
           value=""
         />
 
-        <h3>Please Add Recipe Instructions Here!</h3>
-        <input
+        <Label>Please Add Recipe Instructions Here!</Label>
+        <Input
           placeholder="Instructions"
           id="steps"
           type="text"
           name="steps"
           onChange={handleChanges}
-          value=""
-        /> */}
-
-        <button type="submit">Submit Your Recipe!</button>
+          value={recipe.instructions}
+        />*/}
+    <div>
+        <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
       </form>
     </div>
   );

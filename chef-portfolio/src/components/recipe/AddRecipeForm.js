@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addRecipe } from "../../store/recipe/RecipeActions";
+import { Button, Label, Input } from "reactstrap";
 
 // import {
 //   FormDiv,
@@ -40,10 +41,9 @@ const AddRecipeForm = props => {
 
   return (
     <div>
-      <form onSubmit={submitForm}>
-        <h1>Add your recipe info here!</h1>
-
-        <input
+      <form className="forms" onSubmit={(addRecipe, submitForm)}>
+        <Label>Add your recipe info here!</Label>
+        <Input
           placeholder="Recipe Name"
           id="name"
           type="text"
@@ -69,10 +69,11 @@ const AddRecipeForm = props => {
           value={recipe.time}
         />
 
-        <h3>Please Select a Meal Type!</h3>
-        <select
-          name="meal_type"
-          id="meal_type"
+        <Label>Please Select a Meal Type!</Label>
+        <Input
+          type="select"
+          name="recipeType"
+          id="cuisine"
           onChange={handleChanges}
           value={recipe.meal_type}
         >
@@ -82,10 +83,10 @@ const AddRecipeForm = props => {
           <option value="appetizer">Appetizer</option>
           <option value="dinner">Dinner</option>
           <option value="dessert">Dessert</option>
-        </select>
+        </Input>
 
-        {/* <h3>Please Add Recipe Ingredients Here!</h3>
-        <input
+        {/*<Label>Please Add Recipe Ingredients Here!</Label>
+        <Input
           placeholder="Ingredients"
           id="ingredients"
           type="text"
@@ -94,17 +95,17 @@ const AddRecipeForm = props => {
           value={recipe.ingredients}
         />
 
-        <h3>Please Add Recipe Instructions Here!</h3>
-        <input
+        <Label>Please Add Recipe Instructions Here!</Label>
+        <Input
           placeholder="Instructions"
           id="steps"
           type="text"
           name="steps"
           onChange={handleChanges}
-          value={recipe.steps}
-        /> */}
-
-        <button type="submit">Submit Your Recipe!</button>
+          value={recipe.instructions}
+        />*/}
+        <div>
+          <Button className="buttons" size="lg" color="primary" type="submit">Submit Your Recipe!</Button></div>
       </form>
 
       {/* <AddRecipeCard>

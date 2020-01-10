@@ -1,4 +1,5 @@
 import React from "react";
+import { Nav, NavItem } from 'reactstrap';
 import { Route, NavLink, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -16,32 +17,36 @@ import Logout from "./components/Logout";
 function App() {
   return (
     <div className="App">
-      <nav>
-        <NavLink className="nav-home" to="/Homepage">
-          Home
+      <Nav>
+        <NavItem>
+          <img src="cheflogo.png" alt="chef portfolio logo" className="cheflogo"></img>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav home" to="/Homepage">🍽 Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav post" to="/AddRecipeForm">Add Recipe</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav reg" to="/Register">Register</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav login" to="/Login">Login</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav chef" to="/ChefDashboard">Dashboard</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav edit" to="/EditRecipeForm">Edit Recipe</NavLink>
+        </NavItem>
         </NavLink>
-        <NavLink className="nav-post" to="/AddRecipeForm">
-          Add_Recipe
+          <NavLink className="nav-logout" to="/Homepage">
+            Logout
         </NavLink>
-        <NavLink className="nav-reg" to="/Register">
-          Register
-        </NavLink>
-        <NavLink className="nav-login" to="/Login">
-          Login
-        </NavLink>
-        <NavLink className="nav-chef" to="/ChefDashboard">
-          My Dashboard
-        </NavLink>
-        <NavLink className="nav-edit" to="/EditRecipeForm">
-          Edit_Recipe
-        </NavLink>
-        <NavLink className="nav-logout" to="/Homepage" s>
-          Logout
-        </NavLink>
-        <a href="https://chef-portfolio-4.github.io/landing-page/">
+          <a href="https://chef-portfolio-4.github.io/landing-page/">
           Landing Page
         </a>
-      </nav>
+      </Nav>    
 
       <section>
         {/* <Router> */}

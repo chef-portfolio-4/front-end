@@ -8,7 +8,7 @@ import {
 import EditRecipeForm from "./EditRecipeForm";
 // import history from "../history";
 
-// import { Card, Button, CardHeader } from "reactstrap";
+import { Card, CardText, Button, CardHeader } from "reactstrap";
 
 //this should be pulling from all trucks array in backend
 // const recipe = trucks.find(truck => props.match.params.id === `${truck.id}`);
@@ -29,22 +29,28 @@ const RecipeCard = props => {
   console.log(props, "props in recipeCard");
   return (
     <div className="recipe-card">
-      <h3>{props.recipe.name}</h3>
-      <div>{props.recipe.meal_type}</div>
-      <div>{props.recipe.description}</div>
-      <Link to={`/editrecipeform/${props.recipe.id}`}>
-        <button>Edit Recipe</button>
-      </Link>
-      <button onClick={() => remove(props.recipe.id)}>Delete Recipe</button>
+      <Card>
+      <CardHeader className="cardtitle">{props.recipe.name}</CardHeader>
+      <CardText className="cardtext">{props.recipe.meal_type}</CardText>
+      <CardText className="cardtext">{props.recipe.description}</CardText>
+      <div className="buttondiv">
+      <Link to {`/editrecipeform/${props.recipe.id}`}>
+       <Button size="lg" color="primary" className="buttons">Edit Recipe</Button></Link>
+       <Button size="lg" color="danger" className="buttons" onClick={() => remove(props.recipe.id)}>
+          Delete Recipe</Button>
       <Link to={`/recipedetails/${props.recipe.id}`}>
-        <button
+        <Button size="lg" color="info" className="buttons"
+        key={props.recipe.id}
         // color="danger"
         // onClick={() => props.history.push(`/recipecard/${props.recipe.id}`)}
-        // onClick={() => history.push(`/recipedetails/${props.recipe.id`)}
-        >
-          View Instructions
-        </button>
+        onClick={handleClick}
+      >
+        View Instructions
+      </Button>
       </Link>
+      </div>
+      </Card>
+      
     </div>
   );
 };
